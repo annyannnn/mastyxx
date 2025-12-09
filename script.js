@@ -67,7 +67,7 @@ btn4.onclick=function(){
 }
 
 // =====================
-// МОБИЛЬНОЕ МЕНЮ - исправленный вариант
+// МОБИЛЬНОЕ МЕНЮ - финальный исправленный вариант
 // =====================
 
 // Добавляем стили сразу
@@ -213,43 +213,47 @@ const mobileCSS = `
             padding-top: 70px;
         }
         
-        /* Адаптация заглавной надписи "Салон красоты Masty" */
-        .bg1 {
-            position: absolute !important;
-            top: 50px !important; /* Изменено с 20px на 50px, чтобы было ниже */
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90% !important;
-            text-align: center !important;
-            z-index: 1 !important;
-        }
-        
-        .bg1 h1 {
-            font-size: 32px !important; /* Уменьшен размер */
-            line-height: 1.2 !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-            color: #CABEBC !important;
-            margin: 0 !important;
-            padding: 10px !important;
-            background: rgba(133, 106, 101, 0.3) !important; /* Легкий фон для лучшей читаемости */
-            border-radius: 5px !important;
-        }
-        
-        .bg1 span {
-            font-size: 32px !important; /* Уменьшен размер */
-            display: block !important;
-            margin-top: 5px !important;
-        }
-        
-        /* Адаптация изображения */
+        /* Исправление заголовка "Салон красоты Masty" - сделаем его видимым */
         .main-1 {
             position: relative !important;
         }
         
         .main-1 img {
-            height: 350px !important; /* Увеличил высоту для заголовка */
-            object-fit: cover !important;
             width: 100% !important;
+            height: 300px !important;
+            object-fit: cover !important;
+        }
+        
+        .bg1 {
+            position: absolute !important;
+            top: 50px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 90% !important;
+            text-align: center !important;
+            z-index: 5 !important;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        .bg1 h1 {
+            font-size: 28px !important;
+            line-height: 1.2 !important;
+            color: #CABEBC !important;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8) !important;
+            margin: 0 !important;
+            padding: 10px 15px !important;
+            background: rgba(133, 106, 101, 0.6) !important;
+            border-radius: 8px !important;
+            font-weight: 700 !important;
+        }
+        
+        .bg1 span {
+            font-size: 28px !important;
+            display: block !important;
+            margin-top: 5px !important;
+            font-weight: 400 !important;
         }
         
         /* Центрируем кнопку "Запишись Online" */
@@ -259,7 +263,7 @@ const mobileCSS = `
             text-align: center !important;
             width: fit-content !important;
             font-size: 16px !important;
-            padding: 10px 25px !important;
+            padding: 12px 25px !important;
         }
         
         /* Адаптация текстового блока */
@@ -274,10 +278,31 @@ const mobileCSS = `
             text-align: center !important;
         }
         
-        .bg2 .container p {
-            font-size: 16px !important;
-            line-height: 1.4 !important;
+        /* Изменяем расположение кнопок соцсетей в футере - МАКС справа от ВК */
+        .social {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 20px !important;
+        }
+        
+        .social h2 {
+            width: 100% !important;
+            text-align: center !important;
             margin-bottom: 15px !important;
+        }
+        
+        .social button {
+            display: inline-block !important;
+            margin: 0 !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+        
+        .social button img {
+            width: 100% !important;
+            height: 100% !important;
         }
         
         /* Адаптация галереи */
@@ -299,60 +324,6 @@ const mobileCSS = `
             white-space: nowrap !important;
             padding-bottom: 10px !important;
         }
-        
-        .main-links ul {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            padding: 0 10px !important;
-        }
-        
-        .main-links li {
-            margin-right: 15px !important;
-            flex-shrink: 0 !important;
-        }
-        
-        .main-links button {
-            font-size: 16px !important;
-            padding: 8px 12px !important;
-        }
-        
-        /* Адаптация секции с услугами */
-        .main-3 {
-            padding: 20px 10px !important;
-        }
-        
-        .main-3 .container {
-            width: 100% !important;
-            margin-bottom: 20px !important;
-            margin-right: 0 !important;
-        }
-        
-        .main-3 .container h1 {
-            font-size: 24px !important;
-        }
-        
-        /* Адаптация цитаты */
-        .main-2 .quote {
-            padding: 30px 20px !important;
-            margin: 30px 0 !important;
-        }
-        
-        .main-2 .quote p {
-            font-size: 20px !important;
-        }
-        
-        /* Адаптация партнеров */
-        .partners .container {
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 15px !important;
-            padding: 20px !important;
-        }
-        
-        .partners img {
-            width: 100px !important;
-            height: auto !important;
-        }
     }
     
     /* Десктоп */
@@ -368,15 +339,6 @@ const mobileCSS = `
         
         body {
             padding-top: 0 !important;
-        }
-        
-        /* Возвращаем оригинальные стили для десктопа */
-        .bg1 h1 {
-            font-size: 72px !important;
-        }
-        
-        .bg1 span {
-            font-size: 72px !important;
         }
     }
     
@@ -519,47 +481,79 @@ function adaptForMobile() {
                 text-align: center !important;
                 width: fit-content !important;
                 font-size: 16px !important;
-                padding: 10px 25px !important;
+                padding: 12px 25px !important;
             `;
         } else {
             onlineBtn.style.cssText = '';
         }
     }
     
-    // Обновляем заголовок для мобильных
-    const bg1 = document.querySelector('.bg1');
-    if (bg1 && isMobile) {
-        bg1.style.cssText = `
-            position: absolute !important;
-            top: 50px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90% !important;
-            text-align: center !important;
-            z-index: 1 !important;
-        `;
-        
-        const h1 = bg1.querySelector('h1');
-        if (h1) {
-            h1.style.cssText = `
-                font-size: 32px !important;
-                line-height: 1.2 !important;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-                color: #CABEBC !important;
-                margin: 0 !important;
-                padding: 10px !important;
-                background: rgba(133, 106, 101, 0.3) !important;
-                border-radius: 5px !important;
+    // Исправляем заголовок на мобильных
+    if (isMobile) {
+        const bg1 = document.querySelector('.bg1');
+        if (bg1) {
+            bg1.style.cssText = `
+                position: absolute !important;
+                top: 50px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 90% !important;
+                text-align: center !important;
+                z-index: 5 !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             `;
+            
+            const h1 = bg1.querySelector('h1');
+            if (h1) {
+                h1.style.cssText = `
+                    font-size: 28px !important;
+                    line-height: 1.2 !important;
+                    color: #CABEBC !important;
+                    text-shadow: 2px 2px 5px rgba(0,0,0,0.8) !important;
+                    margin: 0 !important;
+                    padding: 10px 15px !important;
+                    background: rgba(133, 106, 101, 0.6) !important;
+                    border-radius: 8px !important;
+                    font-weight: 700 !important;
+                `;
+            }
+            
+            const span = bg1.querySelector('span');
+            if (span) {
+                span.style.cssText = `
+                    font-size: 28px !important;
+                    display: block !important;
+                    margin-top: 5px !important;
+                    font-weight: 400 !important;
+                `;
+            }
         }
         
-        const span = bg1.querySelector('span');
-        if (span) {
-            span.style.cssText = `
-                font-size: 32px !important;
-                display: block !important;
-                margin-top: 5px !important;
+        // Исправляем расположение кнопок соцсетей в футере
+        const socialSection = document.querySelector('.social');
+        if (socialSection) {
+            socialSection.style.cssText = `
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 20px !important;
             `;
+            
+            // Находим кнопки и делаем их рядом
+            const buttons = socialSection.querySelectorAll('button');
+            if (buttons.length >= 2) {
+                buttons.forEach(button => {
+                    button.style.cssText = `
+                        display: inline-block !important;
+                        margin: 0 !important;
+                        width: 40px !important;
+                        height: 40px !important;
+                    `;
+                });
+            }
         }
     }
 }
