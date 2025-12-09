@@ -394,43 +394,37 @@ style.textContent = mobileCSS;
 document.head.appendChild(style);
 
 // Создаем мобильный хедер и меню
+// Создаем мобильный хедер и меню
 function createMobileMenu() {
-    // Проверяем, не создано ли уже
-    if (document.querySelector('.mobile-header-wrapper')) return;
+    // УДАЛИЛИ проверку на существование — теперь создаём всегда на каждой странице
+    // if (document.querySelector('.mobile-header-wrapper')) return;
     
-    // Создаем контейнер мобильного хедера
     const mobileHeaderWrapper = document.createElement('div');
     mobileHeaderWrapper.className = 'mobile-header-wrapper';
     
-    // Создаем сам хедер
     const mobileHeader = document.createElement('div');
     mobileHeader.className = 'mobile-header';
     
-    // Создаем логотип
     const logoImg = document.createElement('img');
     logoImg.className = 'mobile-header-logo';
-    logoImg.src = 'logo.svg';
+    logoImg.src = 'logo.svg';  // Путь относительный от текущей страницы
     logoImg.alt = 'Masty';
     
-    // Создаем кнопку гамбургер-меню
     const menuToggle = document.createElement('button');
     menuToggle.className = 'mobile-menu-toggle';
     menuToggle.innerHTML = '<span></span><span></span><span></span>';
     menuToggle.setAttribute('aria-label', 'Открыть меню');
     
-    // Собираем хедер
     mobileHeader.appendChild(logoImg);
     mobileHeader.appendChild(menuToggle);
     mobileHeaderWrapper.appendChild(mobileHeader);
     
-    // Создаем мобильное меню
     const mobileNav = document.createElement('div');
     mobileNav.className = 'mobile-nav-overlay';
     
     const navList = document.createElement('ul');
     navList.className = 'mobile-nav-list';
     
-    // Пункты меню
     const menuItems = [
         {href: '/mastyxx/index.html', text: 'Главная'},
         {href: '/mastyxx/Masters/masters.html', text: 'Мастера'},
@@ -451,11 +445,11 @@ function createMobileMenu() {
     
     mobileNav.appendChild(navList);
     
-    // Добавляем в body
+    // Вставляем в начало body (важно!)
     document.body.insertBefore(mobileHeaderWrapper, document.body.firstChild);
     document.body.appendChild(mobileNav);
     
-    // Настраиваем обработчики
+    // Запускаем обработчики
     setupMobileMenuHandlers();
 }
 
@@ -601,3 +595,4 @@ document.addEventListener('click', function(event) {
         }
     }
 });
+
