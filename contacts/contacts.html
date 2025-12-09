@@ -4,68 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-2.css">
     <title>Contacts</title>
-
 </head>
 <body>
    <header>
-    
-    <div class="header__items">
-        <div class="header__img">
-            <button onclick= "window.location.href='https://vk.com/club234239337'" style="background: none; border: none; cursor: pointer; outline: none;">
-                <img src="VK.svg" alt="">
-            </button></div>
-        
-        <nav><ul><li><a href="/mastyxx/index.html">Главная</a> </li>
-        <li><a href="/mastyxx/Masters/masters.html">Мастера</a> </li>
-        <li><a href="/mastyxx/price/price.html">Прайс</a> </li></ul></nav>
-        <img class="header__logo" src="logo.svg" alt="">
-        <nav><ul><li><a href="/mastyxx/stock/stock.html">Акции</a> </li>
-        <li><a href="/mastyxx/reviews1/reviews.html">Отзывы</a> </li>
-        <li><a href="/mastyxx/contacts/contacts.html">Контакты</a> </li></ul></nav>
+    <div class="header__container">
+        <div class="header__items">
+            <div class="header__img">
+                <button onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; cursor: pointer; outline: none;">
+                    <img src="VK.svg" alt="">
+                </button>
+            </div>
+            
+            <nav><ul><li><a href="/mastyxx/index.html">Главная</a> </li>
+            <li><a href="/mastyxx/Masters/masters.html">Мастера</a> </li>
+            <li><a href="/mastyxx/price/price.html">Прайс</a> </li></ul></nav>
+            
+            <img class="header__logo" src="logo.svg" alt="">
+            
+            <nav><ul><li><a href="/mastyxx/stock/stock.html">Акции</a> </li>
+            <li><a href="/mastyxx/reviews1/reviews.html">Отзывы</a> </li>
+            <li><a href="/mastyxx/contacts/contacts.html">Контакты</a> </li></ul></nav>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
     <hr>
    </header> 
-   <section><h1 class="heading">Контакты</h1>
-    <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af27d15502e7a50472535c56ba9d4354587a8d63e205c19427d3e90b4e742d326&amp;source=constructor" width="1300" height="576" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-<footer>
-    <div class="footer__items">
-        <div class="footer__img"><img src="footer__logo.svg" alt=""></div>
-        <div class="footer__contacts">
-            <h2>Контакты</h2>
-            <ul>
-            <li>+7 (909) 999-99-99</li>
-            <li>+7 (915) 123-45-67</li>
-            <li>Рязанский проспект, дом 39 лит. С</li>
-        </ul>
+   
+   <section>
+        <h1 class="heading">Контакты</h1>
+        <div class="map">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af27d15502e7a50472535c56ba9d4354587a8d63e205c19427d3e90b4e742d326&amp;source=constructor" width="100%" height="576" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         
-            
+        <div class="contacts-info">
+            <div class="contact-item">
+                <h3>Телефоны</h3>
+                <p>+7 (909) 999-99-99</p>
+                <p>+7 (915) 123-45-67</p>
+            </div>
+            <div class="contact-item">
+                <h3>Адрес</h3>
+                <p>Рязанский проспект, дом 39 лит. С</p>
+            </div>
+            <div class="contact-item">
+                <h3>Режим работы</h3>
+                <p>C 10:00 до 21:00 (Пн-Пт)</p>
+                <p>С 11:00 до 20:00 (Сб-Вс)</p>
+            </div>
         </div>
-        <div class="working__time">
-            <h2>Режим работы</h2>
-            <ul><li>C 10:00 до 21:00 (Пн-Пт)</li>
-            <li>С 11:00 до 20:00 (Сб-Вс)</li></ul>
-        </div>
-        <div class="social">
-            <h2>Мы в социальных сетях</h2>
-            <button
-            onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; padding: 0; cursor: pointer; outline: none;">
-                <img src="VK.png" alt="">
-            </button>
+   </section>
+   
+   <footer>
+        <div class="footer__items">
+            <div class="footer__img"><img src="footer__logo.svg" alt=""></div>
+            <div class="footer__contacts">
+                <h2>Контакты</h2>
+                <ul>
+                    <li>+7 (909) 999-99-99</li>
+                    <li>+7 (915) 123-45-67</li>
+                    <li>Рязанский проспект, дом 39 лит. С</li>
+                </ul>
+            </div>
+            <div class="working__time">
+                <h2>Режим работы</h2>
+                <ul><li>C 10:00 до 21:00 (Пн-Пт)</li>
+                <li>С 11:00 до 20:00 (Сб-Вс)</li></ul>
+            </div>
+            <div class="social">
+                <h2>Мы в социальных сетях</h2>
+                <button onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; padding: 0; cursor: pointer; outline: none;">
+                    <img src="VK.png" alt="">
+                </button>
 
-            <button
-            onclick="window.location.href='https://max.ru'" style="background: none; border: none; padding: 0; cursor: pointer; outline: none;">
-                <img src="MAX.png" alt="">
-            </button>
+                <button onclick="window.location.href='https://max.ru'" style="background: none; border: none; padding: 0; cursor: pointer; outline: none;">
+                    <img src="MAX.png" alt="">
+                </button>
+            </div>
         </div>
-
-    </div>
-</footer>
-<section>
-    <div class="end">
-        <h1>Copyright © 2017 - 2025</h1>
-    </div>
-</section>
+   </footer>
+   
+   <section>
+        <div class="end">
+            <h1>Copyright © 2017 - 2025</h1>
+        </div>
+   </section>
+   
+   <script src="script-3.js"></script>
 </body>
 </html>
