@@ -33,75 +33,103 @@ body {
     font-family: 'Cormorant Garamond', serif;
     color: #856A65;
     line-height: 1.6;
+    background-color: #fff;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Хедер */
+/* ХЕДЕР - исправленный */
 header {
     width: 100%;
-    padding: 20px 0;
+    padding-top: 49px;
+    padding-bottom: 20px;
 }
 
 .header__container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1296px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 .header__items {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-}
-
-.header__logo {
-    order: 2;
-    flex: 0 0 auto;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
 .header__img {
     order: 1;
     flex: 0 0 auto;
+    margin-left: 0;
+    margin-top: 1px;
 }
 
-.header__nav {
-    order: 3;
-    width: 100%;
-    flex: 1 1 100%;
-    margin-top: 20px;
+.header__img button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
 }
 
-.header__nav ul {
+.header__img img {
+    padding-left: 6px;
+}
+
+/* Левая навигация */
+nav:first-of-type {
+    order: 2;
+    flex: 1;
+    margin-left: 0;
+}
+
+nav:first-of-type ul {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 80px;
+    margin-left: 20px;
 }
 
-.header__nav li {
-    margin: 0;
+/* Логотип */
+.header__logo {
+    order: 3;
+    flex: 0 0 auto;
+    margin-top: -12px;
+    margin-bottom: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.header__nav a {
+/* Правая навигация */
+nav:last-of-type {
+    order: 4;
+    flex: 1;
+    text-align: right;
+}
+
+nav:last-of-type ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 80px;
+    margin-right: 27px;
+}
+
+/* Стили ссылок */
+nav a {
     font-family: 'Cormorant Garamond';
+    font-style: normal;
     font-weight: 600;
     font-size: 18px;
+    line-height: 130%;
     text-decoration: none;
     color: #856A65;
     position: relative;
     white-space: nowrap;
 }
 
-.header__nav a::before {
+nav a::before {
     content: '';
     position: absolute;
     left: 0;
@@ -112,15 +140,170 @@ header {
     transition: width 0.35s;
 }
 
-.header__nav a:hover::before {
+nav a:hover::before {
     width: 100%;
 }
 
 hr {
     width: 100%;
-    margin: 20px auto;
+    max-width: 1296px;
+    margin: 20px auto 76px;
     opacity: 0.5;
     border: 1px solid #000000;
+}
+
+/* Мобильное меню - гамбургер */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #856A65;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+/* МЕДИАЗАПРОСЫ ДЛЯ ХЕДЕРА */
+
+/* Планшеты и небольшие ноутбуки */
+@media (max-width: 1200px) {
+    .header__container {
+        padding: 0 30px;
+    }
+    
+    nav:first-of-type ul,
+    nav:last-of-type ul {
+        gap: 40px;
+    }
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .header__logo {
+        position: static;
+        transform: none;
+        order: 1;
+        margin: 0 auto;
+    }
+    
+    .header__items {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .header__img {
+        order: 2;
+        margin-right: auto;
+        margin-left: 20px;
+    }
+    
+    nav:first-of-type {
+        order: 3;
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+    
+    nav:first-of-type ul {
+        justify-content: center;
+        margin-left: 0;
+        gap: 60px;
+    }
+    
+    nav:last-of-type {
+        order: 4;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    nav:last-of-type ul {
+        justify-content: center;
+        margin-right: 0;
+        gap: 60px;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    header {
+        padding-top: 30px;
+        position: relative;
+    }
+    
+    .header__container {
+        padding: 0 15px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+    }
+    
+    .header__logo {
+        order: 1;
+        margin: 0 auto;
+        width: 80px;
+    }
+    
+    .header__img {
+        display: none; /* Скрываем VK на мобильных */
+    }
+    
+    /* Скрываем навигацию по умолчанию на мобильных */
+    nav:first-of-type,
+    nav:last-of-type {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 0;
+    }
+    
+    /* Показываем навигацию при активации */
+    .mobile-menu-active nav:first-of-type,
+    .mobile-menu-active nav:last-of-type {
+        display: block;
+    }
+    
+    nav:first-of-type ul,
+    nav:last-of-type ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    nav a {
+        font-size: 20px;
+        display: block;
+        padding: 10px 0;
+    }
+    
+    hr {
+        margin: 20px auto 40px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+    .header__logo {
+        width: 60px;
+    }
+    
+    nav a {
+        font-size: 18px;
+    }
 }
 
 /* Форма записи */
@@ -479,124 +662,4 @@ footer {
     font-size: 14px;
     color: #A6A0A0;
     opacity: 0.5;
-}
-
-/* Медиазапросы */
-@media (min-width: 768px) {
-    .header__items {
-        flex-wrap: nowrap;
-    }
-    
-    .header__nav {
-        order: 1;
-        width: auto;
-        flex: 1;
-        margin-top: 0;
-    }
-    
-    .header__logo {
-        order: 2;
-    }
-    
-    .header__img {
-        order: 3;
-    }
-    
-    .header__nav ul {
-        gap: 40px;
-    }
-    
-    .main-1 {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        min-height: 500px;
-    }
-    
-    .main-1 img {
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    .bg1 {
-        top: 50px;
-        left: 50px;
-        right: auto;
-        text-align: left;
-    }
-    
-    .bg2 {
-        display: flex;
-        align-items: center;
-        padding: 0 40px;
-    }
-    
-    .main-2 .quote {
-        padding: 60px 40px;
-    }
-    
-    .partners .container {
-        gap: 60px;
-    }
-    
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .footer__items {
-        grid-template-columns: repeat(4, 1fr);
-        padding: 60px 40px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .header__nav ul {
-        gap: 80px;
-    }
-    
-    .bg1 h1 {
-        font-size: 72px;
-    }
-    
-    .main-3 > .container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-    
-    .form {
-        position: absolute;
-        top: 100px;
-        right: 20px;
-        left: auto;
-        transform: none;
-        max-width: 320px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header__nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .header__nav a {
-        font-size: 16px;
-    }
-    
-    .main-links {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-    
-    .service-item img {
-        height: 150px;
-    }
 }
