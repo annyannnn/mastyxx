@@ -58,12 +58,12 @@ function createMobileMenu() {
     overlay.className = 'mobile-nav-overlay';
     overlay.innerHTML = `
         <ul class="mobile-nav-list">
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="../Masters/masters.html">Мастера</a></li>
-            <li><a href="../price/price.html">Прайс</a></li>
-            <li><a href="../stock/stock.html">Акции</a></li>
-            <li><a href="../reviews1/reviews.html">Отзывы</a></li>
-            <li><a href="../contacts/contacts.html">Контакты</a></li>
+            <li><a href="/mastyxx/index.html">Главная</a></li>
+            <li><a href="/mastyxx/Masters/masters.html">Мастера</a></li>
+            <li><a href="/mastyxx/price/price.html">Прайс</a></li>
+            <li><a href="/mastyxx/stock/stock.html">Акции</a></li>
+            <li><a href="/mastyxx/reviews1/reviews.html">Отзывы</a></li>
+            <li><a href="/mastyxx/contacts/contacts.html">Контакты</a></li>
         </ul>
     `;
 
@@ -189,3 +189,4 @@ document.addEventListener('DOMContentLoaded', () => {
         btn1.classList.add('active');
     }
 });
+
