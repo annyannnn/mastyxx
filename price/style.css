@@ -820,3 +820,123 @@ footer {
         padding: 10px 20px !important;
     }
 }
+
+/* ===================== */
+/* СТРАНИЦА ПРАЙСА       */
+/* ===================== */
+
+.heading {
+    font-family: 'Aref Ruqaa Ink', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 6vw, 48px);
+    text-align: center;
+    color: #856A65;
+    margin: 80px 0 60px;
+}
+
+.price-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.price-block img {
+    width: 100%;
+    max-width: 636px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.price-list {
+    max-width: 526px;
+    width: 100%;
+}
+
+.price-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #856A65;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 130%;
+    color: #856A65;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.price-item h3 span {
+    font-weight: 400;
+    font-size: 24px;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.price-item p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #856A65;
+    margin: 0;
+}
+
+/* Обратный порядок картинки и текста на втором блоке */
+.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Адаптация под мобильные */
+@media (max-width: 1024px) {
+    .price-block {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .reverse {
+        flex-direction: column;
+    }
+    
+    .price-item h3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .price-item h3 span {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading {
+        margin: 60px 0 40px;
+    }
+    
+    .price-block {
+        margin-bottom: 80px;
+        gap: 40px;
+    }
+    
+    .price-item h3 {
+        font-size: 24px;
+    }
+    
+    .price-item h3 span {
+        font-size: 22px;
+    }
+}
