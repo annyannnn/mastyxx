@@ -15,7 +15,7 @@ function initMobileMenu() {
         menuToggle.innerHTML = '<span></span><span></span><span></span>';
         headerItems.appendChild(menuToggle);
         
-        // Создаем мобильное меню, которое будет содержать все пункты
+        // Создаем мобильное меню только с навигацией хедера
         createMobileMenu();
     } else if (mobileMenuToggle && !document.querySelector('.mobile-menu-container')) {
         // Если кнопка уже существует, но меню не создано
@@ -23,14 +23,13 @@ function initMobileMenu() {
     }
 }
 
-// Создание мобильного меню со всеми пунктами
+// Создание мобильного меню ТОЛЬКО с навигацией хедера
 function createMobileMenu() {
     // Проверяем, не создано ли уже мобильное меню
     if (document.querySelector('.mobile-menu-container')) return;
     
-    // Собираем все ссылки из обеих навигаций
-    const leftNavItems = document.querySelectorAll('nav:first-of-type li');
-    const rightNavItems = document.querySelectorAll('nav:last-of-type li');
+    // Находим ТОЛЬКО навигацию в хедере (игнорируем навигацию в main-4)
+    const headerNavs = document.querySelectorAll('header nav');
     
     // Создаем контейнер для мобильного меню
     const mobileMenuContainer = document.createElement('div');
@@ -39,16 +38,20 @@ function createMobileMenu() {
     // Создаем список для мобильного меню
     const mobileMenuList = document.createElement('ul');
     
-    // Добавляем все пункты из левой навигации
-    leftNavItems.forEach(item => {
-        const clone = item.cloneNode(true);
-        mobileMenuList.appendChild(clone);
-    });
-    
-    // Добавляем все пункты из правой навигации
-    rightNavItems.forEach(item => {
-        const clone = item.cloneNode(true);
-        mobileMenuList.appendChild(clone);
+    // Добавляем все пункты из навигации хедера
+    headerNavs.forEach(nav => {
+        // Проверяем, что это навигация хедера, а не галереи
+        const navItems = nav.querySelectorAll('li');
+        navItems.forEach(item => {
+            // Клонируем элемент и сохраняем все стили
+            const clone = item.cloneNode(true);
+            
+            // Проверяем, что это ссылка (а не кнопка "Показать все")
+            const link = clone.querySelector('a');
+            if (link) {
+                mobileMenuList.appendChild(clone);
+            }
+        });
     });
     
     mobileMenuContainer.appendChild(mobileMenuList);
@@ -71,6 +74,7 @@ function addMobileMenuStyles() {
     const style = document.createElement('style');
     style.id = 'mobile-menu-styles';
     style.textContent = `
+        /* Стили для мобильного меню */
         .mobile-menu-container {
             display: none;
             position: absolute;
@@ -81,6 +85,7 @@ function addMobileMenuStyles() {
             z-index: 1000;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             padding: 20px;
+            border-top: 1px solid #e0e0e0;
         }
         
         .mobile-menu-active .mobile-menu-container {
@@ -109,6 +114,7 @@ function addMobileMenuStyles() {
             font-style: normal;
             font-weight: 600;
             font-size: 18px;
+            line-height: 130%;
             text-decoration: none;
             color: #856A65;
             position: relative;
@@ -129,12 +135,16 @@ function addMobileMenuStyles() {
             width: 100%;
         }
         
+        /* Кнопка гамбургер-меню */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             padding: 10px;
             z-index: 1001;
+            background: none;
+            border: none;
+            outline: none;
         }
         
         .menu-toggle span {
@@ -145,6 +155,7 @@ function addMobileMenuStyles() {
             transition: 0.4s;
         }
         
+        /* Стили для скрытия оригинальной навигации на мобильных */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -152,19 +163,33 @@ function addMobileMenuStyles() {
                 margin-left: auto;
             }
             
-            nav:first-of-type,
-            nav:last-of-type {
+            /* Скрываем оригинальную навигацию в хедере */
+            .header__items > nav:first-of-type,
+            .header__items > nav:last-of-type {
                 display: none !important;
             }
             
+            /* Скрываем VK кнопку на мобильных */
             .header__img {
                 display: none;
             }
             
+            /* Центрируем логотип на мобильных */
             .header__logo {
                 order: 1;
                 margin: 0 auto;
                 width: 80px;
+            }
+        }
+        
+        /* Десктопные стили - показываем обычную навигацию */
+        @media (min-width: 769px) {
+            .mobile-menu-container {
+                display: none !important;
+            }
+            
+            .menu-toggle {
+                display: none !important;
             }
         }
     `;
@@ -197,17 +222,23 @@ function setupMobileMenu() {
     });
     
     // Закрытие меню при клике на ссылку в мобильном меню
-    const mobileLinks = document.querySelectorAll('.mobile-menu-container a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                body.classList.remove('mobile-menu-active');
-                const spans = menuToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
+    document.addEventListener('click', function(event) {
+        const mobileMenu = document.querySelector('.mobile-menu-container');
+        const menuToggle = document.getElementById('mobile-menu');
+        
+        if (!mobileMenu || !menuToggle) return;
+        
+        // Если клик вне меню и кнопки меню
+        if (!mobileMenu.contains(event.target) && 
+            !menuToggle.contains(event.target) && 
+            body.classList.contains('mobile-menu-active')) {
+            
+            body.classList.remove('mobile-menu-active');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
     });
     
     // Закрытие меню при изменении размера окна на десктопный
@@ -223,7 +254,7 @@ function setupMobileMenu() {
 }
 
 // =====================
-// ФИЛЬТРАЦИЯ ГАЛЕРЕИ
+// ФИЛЬТРАЦИЯ ГАЛЕРЕИ (ваш оригинальный код без изменений)
 // =====================
 
 var btn1 = document.querySelector("#all");
@@ -241,61 +272,53 @@ var elem7 = document.getElementById('7');
 var elem8 = document.getElementById('8');
 var elem9 = document.getElementById('9');
 
+var s1 = document.querySelector("#s1");
+
 function New(){
-    // Сбрасываем все элементы к видимому состоянию
-    const elements = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9];
-    elements.forEach(elem => {
-        if (elem) elem.style.display = "inline-block";
-    });
-    
-    // Сбрасываем активные кнопки
-    const buttons = [btn1, btn2, btn3, btn4];
-    buttons.forEach(btn => {
-        if (btn) btn.classList.remove('active');
-    });
+    elem1.style.display ="inline-block";
+    elem2.style.display ="inline-block";
+    elem3.style.display ="inline-block";
+    elem4.style.display ="inline-block";
+    elem5.style.display ="inline-block";
+    elem6.style.display ="inline-block";
+    elem7.style.display ="inline-block";
+    elem8.style.display ="inline-block";
+    elem9.style.display ="inline-block";
 }
 
-// Активируем кнопку и добавляем стиль
-function activateButton(button) {
-    // Сначала сбрасываем все
+btn2.onclick=function(){
     New();
-    // Затем активируем текущую кнопку
-    if (button) button.classList.add('active');
+    elem1.style.display ="none";
+    elem2.style.display ="none";
+    elem3.style.display ="none";
+    elem4.style.display ="none";
+    elem5.style.display ="none";
+    elem6.style.display ="none";
+    elem8.style.display ="none";
+    elem9.style.display ="none";
 }
 
-btn1.onclick = function() {
-    activateButton(this);
+btn1.onclick=function(){
+    New();
 }
 
-btn2.onclick = function() {
-    activateButton(this);
-    if (elem1) elem1.style.display = "none";
-    if (elem2) elem2.style.display = "none";
-    if (elem3) elem3.style.display = "none";
-    if (elem4) elem4.style.display = "none";
-    if (elem5) elem5.style.display = "none";
-    if (elem6) elem6.style.display = "none";
-    if (elem8) elem8.style.display = "none";
-    if (elem9) elem9.style.display = "none";
+btn3.onclick=function(){
+    New();
+    elem1.style.display ="none";
+    elem2.style.display ="none";
+    elem5.style.display ="none";
+    elem6.style.display ="none";
+    elem7.style.display ="none";
+    elem8.style.display ="none";
+    elem9.style.display ="none";
 }
 
-btn3.onclick = function() {
-    activateButton(this);
-    if (elem1) elem1.style.display = "none";
-    if (elem2) elem2.style.display = "none";
-    if (elem5) elem5.style.display = "none";
-    if (elem6) elem6.style.display = "none";
-    if (elem7) elem7.style.display = "none";
-    if (elem8) elem8.style.display = "none";
-    if (elem9) elem9.style.display = "none";
-}
-
-btn4.onclick = function() {
-    activateButton(this);
-    if (elem1) elem1.style.display = "none";
-    if (elem3) elem3.style.display = "none";
-    if (elem4) elem4.style.display = "none";
-    if (elem7) elem7.style.display = "none";
+btn4.onclick=function(){
+    New();
+    elem1.style.display ="none";
+    elem3.style.display ="none";
+    elem4.style.display ="none";
+    elem7.style.display ="none";
 }
 
 // =====================
@@ -320,17 +343,6 @@ document.addEventListener('click', function(event) {
 });
 
 // =====================
-// АДАПТАЦИЯ ИЗОБРАЖЕНИЙ
-// =====================
-
-function adaptImages() {
-    const mainImage = document.querySelector('.main-1 img');
-    if (mainImage && window.innerWidth <= 768) {
-        mainImage.style.height = 'auto';
-    }
-}
-
-// =====================
 // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
 // =====================
 
@@ -340,9 +352,12 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMobileMenu();
     
     // Адаптируем изображения
-    adaptImages();
+    const mainImage = document.querySelector('.main-1 img');
+    if (mainImage && window.innerWidth <= 768) {
+        mainImage.style.height = 'auto';
+    }
     
-    // Инициализируем галерею (делаем все видимыми по умолчанию)
+    // Инициализируем активную кнопку в галерее
     if (btn1) {
         btn1.classList.add('active');
     }
@@ -350,7 +365,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Обработка изменения размера окна
 window.addEventListener('resize', function() {
-    adaptImages();
+    // Адаптация изображений
+    const mainImage = document.querySelector('.main-1 img');
+    if (mainImage && window.innerWidth <= 768) {
+        mainImage.style.height = 'auto';
+    }
     
     // Автоматическое закрытие меню при переходе на десктоп
     if (window.innerWidth > 768) {
@@ -370,46 +389,64 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Добавляем стили для активных кнопок фильтрации
+// Добавляем стили для активных кнопок фильтрации (чтобы не терять ваш стиль)
 const style = document.createElement('style');
 style.textContent = `
+    /* Стиль для активной кнопки фильтрации */
     .main-links button.active {
         color: #856A65 !important;
         text-decoration: underline !important;
         text-decoration-color: #CDAA7D !important;
     }
     
-    /* Анимация для кнопок фильтрации */
-    .main-links button {
-        transition: all 0.3s ease;
+    /* Добавляем активный класс кнопкам фильтрации */
+    .main-links button.active {
+        font-family: 'Cormorant Garamond';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 130%;
+        color: #856A65 !important;
+        text-decoration: underline;
+        text-decoration-color: #CDAA7D;
     }
     
-    /* Адаптивные стили для мобильных */
+    /* Улучшаем адаптивность галереи */
     @media (max-width: 768px) {
         .main-4 .container div {
             width: 100% !important;
             margin-right: 0 !important;
+            margin-bottom: 10px;
         }
         
         .main-4 .container img {
             margin-right: 0 !important;
             width: 100% !important;
+            height: auto;
         }
         
         .main-links {
-            justify-content: flex-start !important;
-            overflow-x: auto !important;
+            width: 100% !important;
+            margin-left: 0 !important;
+            overflow-x: auto;
+            white-space: nowrap;
             padding-bottom: 10px;
         }
         
         .main-links ul {
             display: flex;
             flex-wrap: nowrap;
+            justify-content: flex-start;
         }
         
         .main-links li {
             margin-right: 15px !important;
             flex-shrink: 0;
+        }
+        
+        .main-links button {
+            font-size: 18px !important;
+            white-space: nowrap;
         }
     }
 `;
