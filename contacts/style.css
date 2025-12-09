@@ -820,3 +820,70 @@ footer {
         padding: 10px 20px !important;
     }
 }
+
+После стиля: 
+
+/* ===================== */
+/* СТРАНИЦА КОНТАКТОВ    */
+/* ===================== */
+
+.contacts-section {
+    padding: 60px 20px;
+}
+
+.page-heading {
+    font-family: 'Aref Ruqaa Ink', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 6vw, 48px);
+    text-align: center;
+    color: #856A65;
+    margin-bottom: 50px;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    border: 3px solid #856A65;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+/* Мобильная адаптация карты */
+@media (max-width: 768px) {
+    .contacts-section {
+        padding: 40px 15px;
+    }
+    
+    .page-heading {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+    
+    .map-wrapper {
+        border: 2px solid #856A65;
+        border-radius: 6px;
+    }
+    
+    .map-wrapper iframe {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-wrapper iframe {
+        height: 350px;
+    }
+    
+    .page-heading {
+        font-size: 32px;
+    }
+}
