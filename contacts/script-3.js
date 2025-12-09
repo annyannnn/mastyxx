@@ -1,73 +1,5 @@
 // =====================
-// ФИЛЬТРАЦИЯ ГАЛЕРЕИ (ваш оригинальный код без изменений)
-// =====================
-
-var btn1 = document.querySelector("#all");
-var btn2 = document.querySelector("#hair");
-var btn3 = document.querySelector("#nails");
-var btn4 = document.querySelector("#makeup");
-
-var elem1 = document.getElementById('1');
-var elem2 = document.getElementById('2');
-var elem3 = document.getElementById('3');
-var elem4 = document.getElementById('4');
-var elem5 = document.getElementById('5');
-var elem6 = document.getElementById('6');
-var elem7 = document.getElementById('7');
-var elem8 = document.getElementById('8');
-var elem9 = document.getElementById('9');
-
-var s1 = document.querySelector("#s1");
-
-function New(){
-    elem1.style.display ="inline-block";
-    elem2.style.display ="inline-block";
-    elem3.style.display ="inline-block";
-    elem4.style.display ="inline-block";
-    elem5.style.display ="inline-block";
-    elem6.style.display ="inline-block";
-    elem7.style.display ="inline-block";
-    elem8.style.display ="inline-block";
-    elem9.style.display ="inline-block";
-}
-
-btn2.onclick=function(){
-    New();
-    elem1.style.display ="none";
-    elem2.style.display ="none";
-    elem3.style.display ="none";
-    elem4.style.display ="none";
-    elem5.style.display ="none";
-    elem6.style.display ="none";
-    elem8.style.display ="none";
-    elem9.style.display ="none";
-}
-
-btn1.onclick=function(){
-    New();
-}
-
-btn3.onclick=function(){
-    New();
-    elem1.style.display ="none";
-    elem2.style.display ="none";
-    elem5.style.display ="none";
-    elem6.style.display ="none";
-    elem7.style.display ="none";
-    elem8.style.display ="none";
-    elem9.style.display ="none";
-}
-
-btn4.onclick=function(){
-    New();
-    elem1.style.display ="none";
-    elem3.style.display ="none";
-    elem4.style.display ="none";
-    elem7.style.display ="none";
-}
-
-// =====================
-// МОБИЛЬНОЕ МЕНЮ - исправленный вариант
+// МОБИЛЬНОЕ МЕНЮ - универсальная версия
 // =====================
 
 // Добавляем стили сразу
@@ -212,147 +144,6 @@ const mobileCSS = `
         body {
             padding-top: 70px;
         }
-        
-        /* Адаптация заглавной надписи "Салон красоты Masty" */
-        .bg1 {
-            position: absolute !important;
-            top: 50px !important; /* Изменено с 20px на 50px, чтобы было ниже */
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90% !important;
-            text-align: center !important;
-            z-index: 1 !important;
-        }
-        
-        .bg1 h1 {
-            font-size: 32px !important; /* Уменьшен размер */
-            line-height: 1.2 !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-            color: #CABEBC !important;
-            margin: 0 !important;
-            padding: 10px !important;
-            background: rgba(133, 106, 101, 0.3) !important; /* Легкий фон для лучшей читаемости */
-            border-radius: 5px !important;
-        }
-        
-        .bg1 span {
-            font-size: 32px !important; /* Уменьшен размер */
-            display: block !important;
-            margin-top: 5px !important;
-        }
-        
-        /* Адаптация изображения */
-        .main-1 {
-            position: relative !important;
-        }
-        
-        .main-1 img {
-            height: 350px !important; /* Увеличил высоту для заголовка */
-            object-fit: cover !important;
-            width: 100% !important;
-        }
-        
-        /* Центрируем кнопку "Запишись Online" */
-        .bg2 .container a {
-            display: block !important;
-            margin: 20px auto 0 !important;
-            text-align: center !important;
-            width: fit-content !important;
-            font-size: 16px !important;
-            padding: 10px 25px !important;
-        }
-        
-        /* Адаптация текстового блока */
-        .bg2 {
-            width: 100% !important;
-            margin-left: 0 !important;
-            padding: 25px 20px !important;
-        }
-        
-        .bg2 .container {
-            padding: 0 !important;
-            text-align: center !important;
-        }
-        
-        .bg2 .container p {
-            font-size: 16px !important;
-            line-height: 1.4 !important;
-            margin-bottom: 15px !important;
-        }
-        
-        /* Адаптация галереи */
-        .main-4 .container div {
-            width: 100% !important;
-            margin-right: 0 !important;
-            margin-bottom: 15px !important;
-        }
-        
-        .main-4 h1 {
-            font-size: 36px !important;
-            margin-bottom: 30px !important;
-        }
-        
-        .main-links {
-            width: 100% !important;
-            margin-left: 0 !important;
-            overflow-x: auto !important;
-            white-space: nowrap !important;
-            padding-bottom: 10px !important;
-        }
-        
-        .main-links ul {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            padding: 0 10px !important;
-        }
-        
-        .main-links li {
-            margin-right: 15px !important;
-            flex-shrink: 0 !important;
-        }
-        
-        .main-links button {
-            font-size: 16px !important;
-            padding: 8px 12px !important;
-        }
-        
-        /* Адаптация секции с услугами */
-        .main-3 {
-            padding: 20px 10px !important;
-        }
-        
-        .main-3 .container {
-            width: 100% !important;
-            margin-bottom: 20px !important;
-            margin-right: 0 !important;
-        }
-        
-        .main-3 .container h1 {
-            font-size: 24px !important;
-        }
-        
-        /* Адаптация цитаты */
-        .main-2 .quote {
-            padding: 30px 20px !important;
-            margin: 30px 0 !important;
-        }
-        
-        .main-2 .quote p {
-            font-size: 20px !important;
-        }
-        
-        /* Адаптация партнеров */
-        .partners .container {
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 15px !important;
-            padding: 20px !important;
-        }
-        
-        .partners img {
-            width: 100px !important;
-            height: auto !important;
-        }
     }
     
     /* Десктоп */
@@ -369,22 +160,6 @@ const mobileCSS = `
         body {
             padding-top: 0 !important;
         }
-        
-        /* Возвращаем оригинальные стили для десктопа */
-        .bg1 h1 {
-            font-size: 72px !important;
-        }
-        
-        .bg1 span {
-            font-size: 72px !important;
-        }
-    }
-    
-    /* Активная кнопка фильтрации */
-    .main-links button.active {
-        color: #856A65 !important;
-        text-decoration: underline !important;
-        text-decoration-color: #CDAA7D !important;
     }
 `;
 
@@ -505,99 +280,27 @@ function setupMobileMenuHandlers() {
     });
 }
 
-// Адаптация для мобильных
-function adaptForMobile() {
-    const isMobile = window.innerWidth <= 768;
-    
-    // Центрируем кнопку "Запишись Online"
-    const onlineBtn = document.querySelector('.bg2 .container a');
-    if (onlineBtn) {
-        if (isMobile) {
-            onlineBtn.style.cssText = `
-                display: block !important;
-                margin: 20px auto 0 !important;
-                text-align: center !important;
-                width: fit-content !important;
-                font-size: 16px !important;
-                padding: 10px 25px !important;
-            `;
-        } else {
-            onlineBtn.style.cssText = '';
-        }
-    }
-    
-    // Обновляем заголовок для мобильных
-    const bg1 = document.querySelector('.bg1');
-    if (bg1 && isMobile) {
-        bg1.style.cssText = `
-            position: absolute !important;
-            top: 50px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90% !important;
-            text-align: center !important;
-            z-index: 1 !important;
-        `;
-        
-        const h1 = bg1.querySelector('h1');
-        if (h1) {
-            h1.style.cssText = `
-                font-size: 32px !important;
-                line-height: 1.2 !important;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-                color: #CABEBC !important;
-                margin: 0 !important;
-                padding: 10px !important;
-                background: rgba(133, 106, 101, 0.3) !important;
-                border-radius: 5px !important;
-            `;
-        }
-        
-        const span = bg1.querySelector('span');
-        if (span) {
-            span.style.cssText = `
-                font-size: 32px !important;
-                display: block !important;
-                margin-top: 5px !important;
-            `;
-        }
-    }
-}
-
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
-    // Инициализируем активную кнопку в галерее
-    if (btn1) {
-        btn1.classList.add('active');
-    }
-    
     // Создаем мобильное меню
     createMobileMenu();
     
-    // Адаптация
+    // Проверяем ширину экрана и адаптируем
     adaptForMobile();
     
     // Обработчик изменения размера окна
     window.addEventListener('resize', adaptForMobile);
 });
 
-// =====================
-// ФОРМА ЗАПИСИ
-// =====================
-
-function toggleForm() {
-    const form = document.querySelector('.form');
-    if (form) {
-        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+// Адаптация для мобильных
+function adaptForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    
+    // Адаптация карты
+    const mapIframe = document.querySelector('.map iframe');
+    if (mapIframe && isMobile) {
+        mapIframe.style.height = '350px';
+    } else if (mapIframe && !isMobile) {
+        mapIframe.style.height = '576px';
     }
 }
-
-// Закрытие формы при клике вне ее
-document.addEventListener('click', function(event) {
-    const form = document.querySelector('.form');
-    if (form && form.style.display === 'block') {
-        if (!form.contains(event.target)) {
-            form.style.display = 'none';
-        }
-    }
-});
