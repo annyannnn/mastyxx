@@ -580,4 +580,249 @@ color: #856A65;
  }
  .form-content input[type="submit"]:hover {
     background: #C44D58;
+
  }
+/* ===== АДАПТИВНЫЕ СТИЛИ ===== */
+
+/* Для планшетов (до 1024px) */
+@media (max-width: 1024px) {
+    header, .footer__items, .end {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .header__items {
+        margin-right: 0;
+        flex-wrap: wrap;
+    }
+    
+    .header__items li {
+        margin-right: 40px;
+    }
+    
+    .main-1 img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .main-1 .container {
+        position: relative;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .main-3 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .main-3 .container {
+        width: calc(33.333% - 20px);
+        margin-bottom: 40px;
+    }
+    
+    .main-4 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .main-4 .main-links {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .main-4 .container div {
+        width: calc(33.333% - 10px);
+    }
+    
+    .quote {
+        width: 100% !important;
+        margin: 50px auto !important;
+        padding: 20px;
+    }
+    
+    .form {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100px;
+    }
+}
+
+/* Для мобильных устройств (до 768px) */
+@media (max-width: 768px) {
+    /* Header адаптация */
+    .header__items {
+        position: relative;
+        justify-content: space-between;
+        padding: 20px 0;
+    }
+    
+    .header__logo {
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Гамбургер меню */
+    .hamburger {
+        display: block;
+        width: 30px;
+        height: 24px;
+        position: relative;
+        z-index: 1000;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #856A65;
+        margin: 5px 0;
+        transition: 0.3s;
+    }
+    
+    /* Скрываем обычную навигацию */
+    .header__items nav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    
+    .nav-active .header__items nav {
+        display: block;
+    }
+    
+    .header__items li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+    
+    /* Основной контент */
+    .heading {
+        font-size: 36px;
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
+    
+    .main-1 h1 {
+        font-size: 48px;
+    }
+    
+    .main-1 span {
+        font-size: 48px;
+    }
+    
+    .main-1 .container {
+        position: relative;
+        margin: 20px;
+        padding: 20px;
+        width: calc(100% - 40px);
+    }
+    
+    .bg1 {
+        position: relative;
+        margin: 20px 0;
+        text-align: center;
+    }
+    
+    .bg2 {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+    
+    /* Услуги - 1 колонка */
+    .main-3 {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 60px;
+    }
+    
+    .main-3 .container {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    
+    .main-3 .container .container-bg {
+        width: calc(100% - 34px);
+    }
+    
+    /* Работы - 2 колонки */
+    .main-4 .container div {
+        width: calc(50% - 5px);
+    }
+    
+    /* Footer вертикальное расположение */
+    .footer__items {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    
+    .footer__img img {
+        margin: 0 0 20px 0;
+    }
+    
+    .footer__contacts,
+    .working__time,
+    .social {
+        margin: 20px 0;
+    }
+    
+    .footer__contacts li,
+    .working__time li {
+        margin: 10px 0;
+    }
+    
+    .social {
+        padding-right: 0;
+    }
+    
+    .contats_p {
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    hr {
+        width: 100%;
+    }
+}
+
+/* Для очень маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+    .heading {
+        font-size: 28px;
+    }
+    
+    .main-1 h1,
+    .main-1 span {
+        font-size: 36px;
+    }
+    
+    .main-4 h1 {
+        font-size: 36px;
+    }
+    
+    .main-4 .main-links li {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    .main-4 .container div {
+        width: 100%;
+        margin-right: 0;
+    }
+}
