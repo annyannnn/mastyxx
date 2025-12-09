@@ -547,3 +547,161 @@ window.addEventListener('resize', function() {
         }
     }
 });
+
+// ... предыдущий код скрипта до конца ...
+
+// =====================
+// ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
+// =====================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализируем мобильное меню
+    initMobileMenu();
+    setupMobileMenu();
+    
+    // Адаптируем изображения
+    const mainImage = document.querySelector('.main-1 img');
+    if (mainImage && window.innerWidth <= 768) {
+        mainImage.style.height = 'auto';
+    }
+    
+    // Инициализируем активную кнопку в галерее
+    if (btn1) {
+        btn1.classList.add('active');
+    }
+    
+    // Принудительная центровка логотипа на мобильных
+    adaptLogoPosition();
+});
+
+// Функция для адаптации позиции логотипа
+function adaptLogoPosition() {
+    const logo = document.querySelector('.header__logo');
+    const headerItems = document.querySelector('.header__items');
+    
+    if (window.innerWidth <= 768 && logo && headerItems) {
+        // Добавляем класс для мобильного хедера
+        headerItems.classList.add('mobile-header');
+        
+        // Принудительно центрируем логотип
+        logo.style.position = 'absolute';
+        logo.style.left = '50%';
+        logo.style.transform = 'translateX(-50%)';
+        logo.style.margin = '0';
+        
+        // Центрируем кнопку "Запишись Online"
+        const onlineButton = document.querySelector('.bg2 .container a');
+        if (onlineButton) {
+            const container = onlineButton.closest('.container');
+            if (container) {
+                container.style.textAlign = 'center';
+                container.style.display = 'flex';
+                container.style.flexDirection = 'column';
+                container.style.alignItems = 'center';
+            }
+            onlineButton.style.margin = '20px auto 0';
+            onlineButton.style.display = 'block';
+        }
+    }
+}
+
+// Обработка изменения размера окна
+window.addEventListener('resize', function() {
+    // Адаптация изображений
+    const mainImage = document.querySelector('.main-1 img');
+    if (mainImage && window.innerWidth <= 768) {
+        mainImage.style.height = 'auto';
+    }
+    
+    // Адаптация позиции логотипа
+    adaptLogoPosition();
+    
+    // Автоматическое закрытие меню при переходе на десктоп
+    if (window.innerWidth > 768) {
+        const body = document.getElementById('body');
+        const menuToggle = document.getElementById('mobile-menu');
+        
+        if (body && body.classList.contains('mobile-menu-active')) {
+            body.classList.remove('mobile-menu-active');
+            
+            if (menuToggle) {
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        }
+        
+        // Возвращаем нормальное отображение на десктопе
+        const headerItems = document.querySelector('.header__items');
+        if (headerItems) {
+            headerItems.classList.remove('mobile-header');
+        }
+        
+        const logo = document.querySelector('.header__logo');
+        if (logo) {
+            logo.style.position = '';
+            logo.style.left = '';
+            logo.style.transform = '';
+            logo.style.margin = '';
+        }
+        
+        const onlineButton = document.querySelector('.bg2 .container a');
+        if (onlineButton) {
+            const container = onlineButton.closest('.container');
+            if (container) {
+                container.style.textAlign = '';
+                container.style.display = '';
+                container.style.flexDirection = '';
+                container.style.alignItems = '';
+            }
+            onlineButton.style.margin = '';
+            onlineButton.style.display = '';
+        }
+    }
+});
+
+// Добавляем стили для мобильной адаптации
+const mobileStyles = document.createElement('style');
+mobileStyles.textContent = `
+    /* Класс для мобильного хедера */
+    .mobile-header {
+        position: relative !important;
+        min-height: 80px !important;
+    }
+    
+    /* Медиазапрос для очень точного центрирования */
+    @media (max-width: 768px) {
+        /* Центрирование логотипа с более высоким приоритетом */
+        body .header__items .header__logo {
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) translateY(-50%) !important;
+            top: 50% !important;
+            margin: 0 !important;
+            width: 80px !important;
+            z-index: 1 !important;
+        }
+        
+        /* Центрирование кнопки "Запишись Online" */
+        body .main-1 .bg2 .container {
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 30px 20px !important;
+        }
+        
+        body .main-1 .bg2 .container a {
+            display: inline-block !important;
+            margin: 25px auto 0 !important;
+            padding: 12px 25px !important;
+            text-align: center !important;
+            width: auto !important;
+            min-width: 200px !important;
+        }
+    }
+`;
+document.head.appendChild(mobileStyles);
+
