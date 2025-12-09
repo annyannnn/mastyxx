@@ -28,8 +28,8 @@ function createMobileMenu() {
     // Проверяем, не создано ли уже мобильное меню
     if (document.querySelector('.mobile-menu-container')) return;
     
-    // Находим ТОЛЬКО навигацию в хедере (игнорируем навигацию в main-4)
-    const headerNavs = document.querySelectorAll('header nav');
+    // Находим ТОЛЬКО навигацию, которая является прямым потомком .header__items
+    const headerNavs = document.querySelectorAll('.header__items > nav');
     
     // Создаем контейнер для мобильного меню
     const mobileMenuContainer = document.createElement('div');
@@ -40,16 +40,25 @@ function createMobileMenu() {
     
     // Добавляем все пункты из навигации хедера
     headerNavs.forEach(nav => {
-        // Проверяем, что это навигация хедера, а не галереи
         const navItems = nav.querySelectorAll('li');
         navItems.forEach(item => {
-            // Клонируем элемент и сохраняем все стили
-            const clone = item.cloneNode(true);
-            
-            // Проверяем, что это ссылка (а не кнопка "Показать все")
-            const link = clone.querySelector('a');
-            if (link) {
-                mobileMenuList.appendChild(clone);
+            // Клонируем элемент и проверяем, что это именно ссылка навигации
+            const link = item.querySelector('a');
+            if (link && link.getAttribute('href')) {
+                // Создаем новый li с той же структурой
+                const newLi = document.createElement('li');
+                const newLink = document.createElement('a');
+                
+                // Копируем все атрибуты и содержимое
+                newLink.href = link.href;
+                newLink.textContent = link.textContent;
+                
+                // Копируем классы и стили
+                newLink.className = link.className;
+                newLink.style.cssText = link.style.cssText;
+                
+                newLi.appendChild(newLink);
+                mobileMenuList.appendChild(newLi);
             }
         });
     });
@@ -164,8 +173,7 @@ function addMobileMenuStyles() {
             }
             
             /* Скрываем оригинальную навигацию в хедере */
-            .header__items > nav:first-of-type,
-            .header__items > nav:last-of-type {
+            .header__items > nav {
                 display: none !important;
             }
             
@@ -191,6 +199,14 @@ function addMobileMenuStyles() {
             .menu-toggle {
                 display: none !important;
             }
+            
+            .header__items > nav {
+                display: inline-block !important;
+            }
+            
+            .header__img {
+                display: block !important;
+            }
         }
     `;
     
@@ -205,7 +221,8 @@ function setupMobileMenu() {
     if (!menuToggle || !body) return;
     
     // Обработчик клика по кнопке меню
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation(); // Останавливаем всплытие
         body.classList.toggle('mobile-menu-active');
         
         // Анимация гамбургера в крестик
@@ -226,11 +243,9 @@ function setupMobileMenu() {
         const mobileMenu = document.querySelector('.mobile-menu-container');
         const menuToggle = document.getElementById('mobile-menu');
         
-        if (!mobileMenu || !menuToggle) return;
-        
-        // Если клик вне меню и кнопки меню
-        if (!mobileMenu.contains(event.target) && 
-            !menuToggle.contains(event.target) && 
+        // Если клик на ссылку в мобильном меню
+        if (mobileMenu && mobileMenu.contains(event.target) && 
+            event.target.tagName === 'A' && 
             body.classList.contains('mobile-menu-active')) {
             
             body.classList.remove('mobile-menu-active');
@@ -245,10 +260,13 @@ function setupMobileMenu() {
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             body.classList.remove('mobile-menu-active');
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            const menuToggle = document.getElementById('mobile-menu');
+            if (menuToggle) {
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
         }
     });
 }
@@ -389,7 +407,7 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Добавляем стили для активных кнопок фильтрации (чтобы не терять ваш стиль)
+// Добавляем стили для активных кнопок фильтрации
 const style = document.createElement('style');
 style.textContent = `
     /* Стиль для активной кнопки фильтрации */
@@ -397,18 +415,6 @@ style.textContent = `
         color: #856A65 !important;
         text-decoration: underline !important;
         text-decoration-color: #CDAA7D !important;
-    }
-    
-    /* Добавляем активный класс кнопкам фильтрации */
-    .main-links button.active {
-        font-family: 'Cormorant Garamond';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 130%;
-        color: #856A65 !important;
-        text-decoration: underline;
-        text-decoration-color: #CDAA7D;
     }
     
     /* Улучшаем адаптивность галереи */
