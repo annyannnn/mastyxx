@@ -5,59 +5,119 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 ul {
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 img {
-    margin: 0;
-    padding: 0;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Общие стили для десктопа */
-header {
-    width: 1296px;
-    margin: 0 auto;
-    padding-top: 49px;
-}
-
+/* Общие стили */
 body {
-    margin-bottom: 0;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    color: #856A65;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+/* ХЕДЕР - исправленный */
+header {
+    width: 100%;
+    padding-top: 49px;
+    padding-bottom: 20px;
+}
+
+.header__container {
+    width: 100%;
+    max-width: 1296px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .header__items {
     display: flex;
-    justify-content: space-around;
-    margin-right: 27px;
-}
-
-.header__logo {
-    margin-top: -12px;
-    margin-bottom: 30px;
-}
-
-.header__items li {
-    display: inline-block;
-    margin-right: 80px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
 .header__img {
+    order: 1;
+    flex: 0 0 auto;
+    margin-left: 0;
     margin-top: 1px;
-    margin-left: -50px;
+}
+
+.header__img button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
 }
 
 .header__img img {
     padding-left: 6px;
 }
 
-nav {
-    display: inline-block;
+/* Левая навигация */
+nav:first-of-type {
+    order: 2;
+    flex: 1;
+    margin-left: 0;
 }
 
-nav li a {
+nav:first-of-type ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 80px;
+    margin-left: 20px;
+}
+
+/* Логотип */
+.header__logo {
+    order: 3;
+    flex: 0 0 auto;
+    margin-top: -12px;
+    margin-bottom: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Правая навигация */
+nav:last-of-type {
+    order: 4;
+    flex: 1;
+    text-align: right;
+}
+
+nav:last-of-type ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 80px;
+    margin-right: 27px;
+}
+
+/* Стили ссылок */
+nav a {
     font-family: 'Cormorant Garamond';
     font-style: normal;
     font-weight: 600;
@@ -65,25 +125,8 @@ nav li a {
     line-height: 130%;
     text-decoration: none;
     color: #856A65;
-}
-
-hr {
-    margin-bottom: 76px;
-    width: 1296px;
-    opacity: 0.5;
-    border: 1px solid #000000;
-}
-
-nav ul :last-child {
-    margin-right: 20px;
-}
-
-/* Стили ссылок для десктопа */
-nav a {
     position: relative;
-    color: #484848;
-    font-size: 1.25rem;
-    text-decoration: none;
+    white-space: nowrap;
 }
 
 nav a::before {
@@ -94,143 +137,22 @@ nav a::before {
     width: 0;
     height: 1.5px;
     background-color: #CDAA7D;
+    transition: width 0.35s;
 }
 
 nav a:hover::before {
     width: 100%;
 }
 
-nav a::before {
-    transition: width 0.35s;
-}
-
-/* Основной контент */
-.heading {
-    margin-left: 29px;
-    margin-bottom: 80px;
-    text-align: center;
-    font-family: 'Aref Ruqaa Ink';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 120%;
-    color: #856A65;
-}
-
-.map {
-    width: 1300px;
-    margin: 0 auto 80px;
-}
-
-.map iframe {
+hr {
     width: 100%;
-    height: 576px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* Футер для десктопа */
-.footer__img img {
-    width: 70px;
-    height: 64.24px;
-    margin-left: 128px;
-    margin-right: 100px;
-    z-index: 1;
-}
-
-.footer__items {
-    border-top: 1px solid #242220;
-    border-bottom: 1px solid #242220;
-    padding-top: 77px;
-    background: #FDF4F4;
-    padding-bottom: 77px;
-    padding-right: 94px;
+    max-width: 1296px;
+    margin: 20px auto 76px;
     opacity: 0.5;
-    width: 1296px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    border: 1px solid #000000;
 }
 
-li {
-    list-style: none;
-}
-
-.footer__contacts {
-    margin-left: -115px;
-}
-
-.footer__contacts li {
-    margin-top: 17px;
-    cursor: pointer;
-}
-
-.footer__contacts li:last-child {
-    cursor: auto;
-}
-
-.working__time {
-    margin-left: -139px;
-}
-
-.working__time li {
-    margin-top: 17px;
-}
-
-.social {
-    padding-right: 49px;
-}
-
-.social img {
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.social h2,
-.footer__contacts h2,
-.working__time h2 {
-    font-family: 'Cormorant Garamond';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 140%;
-    color: #856A65;
-    margin-bottom: 15px;
-}
-
-.social ul,
-.footer__contacts ul,
-.working__time ul {
-    font-family: 'Cormorant Garamond';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 130%;
-    color: #856A65;
-}
-
-.end {
-    width: 1296px;
-    height: 59px;
-    margin: 0 auto;
-    background: #FDF4F4;
-}
-
-.end h1 {
-    padding-top: 15px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Cormorant Garamond';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 140%;
-    text-align: center;
-    color: #A6A0A0;
-    opacity: 0.5;
-}
-
-/* Кнопка гамбургер-меню (скрыта по умолчанию) */
+/* Мобильное меню - гамбургер */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -252,91 +174,214 @@ li {
     transition: 0.4s;
 }
 
+/* СТРАНИЦА КОНТАКТОВ */
+.heading {
+    margin: 0 auto 80px;
+    text-align: center;
+    font-family: 'Aref Ruqaa Ink';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    color: #856A65;
+    max-width: 1296px;
+    padding: 0 20px;
+}
+
+.map-container {
+    width: 1300px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 576px;
+    display: block;
+}
+
+/* Футер */
+footer {
+    background: #FDF4F4;
+    border-top: 1px solid #242220;
+    border-bottom: 1px solid #242220;
+    opacity: 0.5;
+    width: 100%;
+}
+
+.footer__items {
+    display: flex;
+    justify-content: space-between;
+    padding: 77px 94px 77px 0;
+    width: 1296px;
+    margin: 0 auto;
+}
+
+.footer__img img {
+    width: 70px;
+    height: 64.24px;
+    margin-left: 128px;
+    margin-right: 100px;
+    z-index: 1;
+}
+
+.footer__contacts {
+    margin-left: -115px;
+}
+
+.footer__contacts li {
+    margin-top: 17px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #856A65;
+}
+
+.footer__contacts li:last-child {
+    cursor: auto;
+}
+
+.footer__contacts h2,
+.working__time h2,
+.social h2 {
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    color: #856A65;
+    margin-bottom: 15px;
+}
+
+.working__time {
+    margin-left: -139px;
+}
+
+.working__time li {
+    margin-top: 17px;
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #856A65;
+}
+
+.social {
+    padding-right: 49px;
+}
+
+.social img {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Копирайт */
+.end {
+    width: 1296px;
+    height: 59px;
+    margin: 0 auto;
+    background: #FDF4F4;
+}
+
+.end h1 {
+    padding-top: 15px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Cormorant Garamond';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: center;
+    color: #A6A0A0;
+    opacity: 0.5;
+}
+
 /* ===================== */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* МЕДИАЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ */
 /* ===================== */
 
 /* Планшеты и небольшие ноутбуки */
 @media (max-width: 1300px) {
-    header,
+    .header__container,
+    .heading,
+    .map-container,
     .footer__items,
-    .end,
-    .map {
+    .end {
         width: 95%;
         max-width: 1200px;
     }
     
-    .header__items li {
-        margin-right: 40px;
+    .footer__items {
+        padding: 77px 40px 77px 0;
     }
     
-    hr {
-        width: 95%;
-        max-width: 1200px;
+    .footer__img img {
+        margin-left: 0;
+        margin-right: 50px;
     }
     
-    .map iframe {
+    .map-container iframe {
         height: 500px;
     }
 }
 
 /* Планшеты */
 @media (max-width: 1024px) {
+    .header__logo {
+        position: static;
+        transform: none;
+        order: 1;
+        margin: 0 auto 20px;
+    }
+    
     .header__items {
         flex-wrap: wrap;
         justify-content: center;
-        margin-right: 0;
-    }
-    
-    .header__logo {
-        order: 1;
-        margin: 0 auto 20px;
-        position: relative;
-        display: block;
     }
     
     .header__img {
         order: 2;
-        margin: 0;
+        margin-right: auto;
+        margin-left: 20px;
     }
     
     nav:first-of-type {
         order: 3;
         width: 100%;
-        text-align: center;
         margin-top: 20px;
+        margin-left: 0;
     }
     
     nav:first-of-type ul {
-        display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 40px;
+        margin-left: 0;
+        gap: 60px;
     }
     
     nav:last-of-type {
         order: 4;
         width: 100%;
-        text-align: center;
         margin-top: 20px;
     }
     
     nav:last-of-type ul {
-        display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 40px;
         margin-right: 0;
-    }
-    
-    .header__items li {
-        margin-right: 40px;
-        margin-bottom: 10px;
+        gap: 60px;
     }
     
     .heading {
         font-size: 42px;
-        margin-left: 0;
+        margin-bottom: 60px;
+    }
+    
+    .map-container iframe {
+        height: 450px;
     }
     
     .footer__items {
@@ -371,41 +416,46 @@ li {
 /* Мобильные устройства */
 @media (max-width: 768px) {
     header {
-        width: 100%;
-        padding-top: 20px;
+        padding-top: 30px;
         position: relative;
-        min-height: 80px;
     }
     
-    .header__items {
-        flex-direction: column;
-        align-items: center;
-        margin-right: 0;
+    .header__container {
+        padding: 0 15px;
     }
     
     .menu-toggle {
         display: flex;
-        position: absolute;
-        right: 15px;
-        top: 15px;
+        order: 2;
+        margin-left: auto;
     }
     
     .header__logo {
         order: 1;
-        margin: 0 auto 15px;
+        margin: 0 auto;
         width: 80px;
+    }
+    
+    .header__img {
+        display: none;
     }
     
     /* Скрываем навигацию по умолчанию на мобильных */
     nav:first-of-type,
     nav:last-of-type {
         display: none;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 0;
     }
     
-    /* Показываем навигацию при активации гамбургера */
+    /* Показываем навигацию при активации */
     .mobile-menu-active nav:first-of-type,
     .mobile-menu-active nav:last-of-type {
         display: block;
@@ -414,48 +464,32 @@ li {
     nav:first-of-type ul,
     nav:last-of-type ul {
         flex-direction: column;
-        gap: 15px;
-        padding: 0;
+        align-items: center;
+        gap: 20px;
     }
     
-    .header__items li {
-        margin-right: 0;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-    
-    .header__img {
-        position: absolute;
-        left: 15px;
-        top: 20px;
-        margin: 0;
-        order: 2;
-    }
-    
-    .header__img img {
-        width: 30px;
-        height: 30px;
+    nav a {
+        font-size: 20px;
+        display: block;
+        padding: 10px 0;
     }
     
     hr {
-        width: 100%;
-        margin: 15px auto 40px;
+        margin: 20px auto 40px;
     }
     
     .heading {
         font-size: 36px;
-        margin-left: 0;
         margin-bottom: 40px;
-        padding: 0 15px;
     }
     
-    .map {
+    .map-container {
         width: 100%;
         padding: 0 15px;
         margin-bottom: 40px;
     }
     
-    .map iframe {
+    .map-container iframe {
         height: 350px;
     }
     
@@ -516,7 +550,7 @@ li {
         font-size: 32px;
     }
     
-    .map iframe {
+    .map-container iframe {
         height: 300px;
     }
     
