@@ -15,12 +15,161 @@ function initMobileMenu() {
         menuToggle.innerHTML = '<span></span><span></span><span></span>';
         headerItems.appendChild(menuToggle);
         
-        // Инициализируем обработчики событий для новой кнопки
-        setupMobileMenu();
-    } else if (mobileMenuToggle) {
-        // Если кнопка уже существует, просто инициализируем обработчики
-        setupMobileMenu();
+        // Создаем мобильное меню, которое будет содержать все пункты
+        createMobileMenu();
+    } else if (mobileMenuToggle && !document.querySelector('.mobile-menu-container')) {
+        // Если кнопка уже существует, но меню не создано
+        createMobileMenu();
     }
+}
+
+// Создание мобильного меню со всеми пунктами
+function createMobileMenu() {
+    // Проверяем, не создано ли уже мобильное меню
+    if (document.querySelector('.mobile-menu-container')) return;
+    
+    // Собираем все ссылки из обеих навигаций
+    const leftNavItems = document.querySelectorAll('nav:first-of-type li');
+    const rightNavItems = document.querySelectorAll('nav:last-of-type li');
+    
+    // Создаем контейнер для мобильного меню
+    const mobileMenuContainer = document.createElement('div');
+    mobileMenuContainer.className = 'mobile-menu-container';
+    
+    // Создаем список для мобильного меню
+    const mobileMenuList = document.createElement('ul');
+    
+    // Добавляем все пункты из левой навигации
+    leftNavItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        mobileMenuList.appendChild(clone);
+    });
+    
+    // Добавляем все пункты из правой навигации
+    rightNavItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        mobileMenuList.appendChild(clone);
+    });
+    
+    mobileMenuContainer.appendChild(mobileMenuList);
+    
+    // Добавляем контейнер меню в header__items
+    const headerItems = document.querySelector('.header__items');
+    if (headerItems) {
+        headerItems.appendChild(mobileMenuContainer);
+    }
+    
+    // Добавляем стили для мобильного меню
+    addMobileMenuStyles();
+}
+
+// Добавление стилей для мобильного меню
+function addMobileMenuStyles() {
+    // Проверяем, не добавлены ли стили уже
+    if (document.querySelector('#mobile-menu-styles')) return;
+    
+    const style = document.createElement('style');
+    style.id = 'mobile-menu-styles';
+    style.textContent = `
+        .mobile-menu-container {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .mobile-menu-active .mobile-menu-container {
+            display: block;
+        }
+        
+        .mobile-menu-container ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mobile-menu-container li {
+            list-style: none;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .mobile-menu-container a {
+            display: block;
+            padding: 10px 0;
+            font-family: 'Cormorant Garamond';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+            color: #856A65;
+            position: relative;
+        }
+        
+        .mobile-menu-container a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: #CDAA7D;
+            transition: width 0.35s;
+        }
+        
+        .mobile-menu-container a:hover::before {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #856A65;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                order: 2;
+                margin-left: auto;
+            }
+            
+            nav:first-of-type,
+            nav:last-of-type {
+                display: none !important;
+            }
+            
+            .header__img {
+                display: none;
+            }
+            
+            .header__logo {
+                order: 1;
+                margin: 0 auto;
+                width: 80px;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
 }
 
 // Настройка мобильного меню
@@ -47,9 +196,9 @@ function setupMobileMenu() {
         }
     });
     
-    // Закрытие меню при клике на ссылку
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
+    // Закрытие меню при клике на ссылку в мобильном меню
+    const mobileLinks = document.querySelectorAll('.mobile-menu-container a');
+    mobileLinks.forEach(link => {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 768) {
                 body.classList.remove('mobile-menu-active');
@@ -188,6 +337,7 @@ function adaptImages() {
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализируем мобильное меню
     initMobileMenu();
+    setupMobileMenu();
     
     // Адаптируем изображения
     adaptImages();
@@ -195,13 +345,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализируем галерею (делаем все видимыми по умолчанию)
     if (btn1) {
         btn1.classList.add('active');
-    }
-    
-    // Проверяем, есть ли все элементы галереи
-    const galleryElements = [elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8, elem9];
-    const missingElements = galleryElements.filter(elem => !elem);
-    if (missingElements.length > 0) {
-        console.log('Некоторые элементы галереи не найдены');
     }
 });
 
@@ -226,62 +369,6 @@ window.addEventListener('resize', function() {
         }
     }
 });
-
-// =====================
-// ПЛАВНАЯ ПРОКРУТКА
-// =====================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// =====================
-// ОБРАБОТКА ФОРМЫ
-// =====================
-
-const bookingForm = document.querySelector('.form');
-if (bookingForm) {
-    bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Получаем данные формы
-        const name = this.querySelector('input[name="your-name"]').value;
-        const phone = this.querySelector('input[name="your-phone"]').value;
-        const service = this.querySelector('select[name="guests"]').value;
-        const time = this.querySelector('select[name="attending"]').value;
-        
-        // Простая валидация
-        if (!name || !phone) {
-            alert('Пожалуйста, заполните все обязательные поля');
-            return;
-        }
-        
-        // Здесь можно добавить отправку данных на сервер
-        console.log('Данные формы:', { name, phone, service, time });
-        
-        // Показываем сообщение об успехе
-        alert('Спасибо! Ваша запись принята. Мы свяжемся с вами для подтверждения.');
-        
-        // Сбрасываем форму
-        this.reset();
-        
-        // Скрываем форму
-        this.style.display = 'none';
-    });
-}
 
 // Добавляем стили для активных кнопок фильтрации
 const style = document.createElement('style');
