@@ -2,46 +2,31 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Контакты | Masty</title>
 </head>
-<body id="body">
+<body>
 
-<!-- Обычный десктопный хедер (остаётся как есть) -->
 <header>
     <div class="header__container">
         <div class="header__items">
             <div class="header__img">
-                <button onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; cursor: pointer; outline: none;">
-                    <img src="VK.svg" alt="VK">
+                <button onclick="window.location.href='https://vk.com/club234239337'">
+                    <img src="../VK.svg" alt="VK">
                 </button>
             </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Главная</a></li>
-                    <li><a href="../Masters/masters.html">Мастера</a></li>
-                    <li><a href="../price/price.html">Прайс</a></li>
-                </ul>
-            </nav>
-            
-            <img class="header__logo" src="logo.svg" alt="Masty">
-            
-            <nav>
-                <ul>
-                    <li><a href="../stock/stock.html">Акции</a></li>
-                    <li><a href="../reviews1/reviews.html">Отзывы</a></li>
-                    <li><a href="../contacts/contacts.html">Контакты</a></li>
-                </ul>
-            </nav>
-            
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <nav><ul>
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="mastyxx/Masters/masters.html">Мастера</a></li>
+                <li><a href="mastyxx/price/price.html">Прайс</a></li>
+            </ul></nav>
+            <img class="header__logo" src="mastyxx/logo.svg" alt="Masty">
+            <nav><ul>
+                <li><a href="mastyxx/stock/stock.html">Акции</a></li>
+                <li><a href="mastyxx/reviews1/reviews.html">Отзывы</a></li>
+                <li><a href="mastyxx/contacts/contacts.html">Контакты</a></li>
+            </ul></nav>
         </div>
     </div>
     <hr>
@@ -51,16 +36,9 @@
     <section class="contacts-section">
         <div class="container">
             <h1 class="page-heading">Контакты</h1>
-            
             <div class="map-wrapper">
-                <iframe 
-                    src="https://yandex.ru/map-widget/v1/?um=constructor%3Af27d15502e7a50472535c56ba9d4354587a8d63e205c19427d3e90b4e742d326&amp;source=constructor" 
-                    width="100%" 
-                    height="500" 
-                    frameborder="0" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af27d15502e7a50472535c56ba9d4354587a8d63e205c19427d3e90b4e742d326&amp;source=constructor" 
+                        width="100%" height="500" frameborder="0"></iframe>
             </div>
         </div>
     </section>
@@ -86,23 +64,14 @@
         </div>
         <div class="social">
             <h2>Мы в социальных сетях</h2>
-            <button onclick="window.location.href='https://vk.com/club234239337'">
-                <img src="VK.png" alt="VK">
-            </button>
-            <button onclick="window.location.href='https://max.ru'">
-                <img src="MAX.png" alt="MAX">
-            </button>
+            <button onclick="window.location.href='https://vk.com/club234239337'"><img src="VK.png" alt="VK"></button>
+            <button onclick="window.location.href='https://max.ru'"><img src="MAX.png" alt="MAX"></button>
         </div>
     </div>
 </footer>
 
-<section>
-    <div class="end">
-        <h1>Copyright © 2017 - 2025</h1>
-    </div>
-</section>
+<div class="end"><h1>Copyright © 2017 - 2025</h1></div>
 
-<!-- Скрипт подключаем в самом конце body — это критично! -->
 <script src="script.js"></script>
 </body>
 </html>
