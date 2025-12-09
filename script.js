@@ -67,7 +67,7 @@ btn4.onclick=function(){
 }
 
 // =====================
-// МОБИЛЬНОЕ МЕНЮ (простой и надежный вариант)
+// МОБИЛЬНОЕ МЕНЮ - простой работающий вариант
 // =====================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -76,157 +76,309 @@ document.addEventListener('DOMContentLoaded', function() {
         btn1.classList.add('active');
     }
     
-    // Инициализируем мобильное меню
-    initMobileMenu();
+    // Создаем гамбургер меню - простой вариант
+    createSimpleMobileMenu();
     
-    // Настройка адаптивности
-    setupAdaptiveLayout();
+    // Запускаем адаптацию
+    adaptForMobile();
     
     // Обработчик изменения размера окна
-    window.addEventListener('resize', setupAdaptiveLayout);
+    window.addEventListener('resize', adaptForMobile);
 });
 
-// Основная функция инициализации мобильного меню
-function initMobileMenu() {
-    // Добавляем стили
-    addMobileStyles();
-    
-    // Создаем гамбургер-кнопку
-    createHamburgerButton();
-    
-    // Создаем мобильное меню
-    createMobileMenuContent();
-    
-    // Настраиваем обработчики
-    setupEventHandlers();
-}
-
-// Создание гамбургер-кнопки
-function createHamburgerButton() {
-    // Проверяем, не создана ли уже кнопка
+// Простой рабочий гамбургер меню
+function createSimpleMobileMenu() {
+    // Проверяем, не создано ли уже
     if (document.getElementById('mobile-hamburger')) return;
     
-    // Создаем кнопку
-    const hamburgerBtn = document.createElement('button');
-    hamburgerBtn.id = 'mobile-hamburger';
-    hamburgerBtn.className = 'mobile-hamburger';
-    hamburgerBtn.innerHTML = '<span></span><span></span><span></span>';
-    hamburgerBtn.setAttribute('aria-label', 'Меню');
+    // Создаем простой чекбокс для управления меню (чистый CSS подход)
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'menu-toggle';
+    checkbox.className = 'menu-toggle-checkbox';
     
-    // Добавляем кнопку в header
-    const header = document.querySelector('header');
-    if (header) {
-        header.appendChild(hamburgerBtn);
-    }
-}
-
-// Создание содержимого мобильного меню
-function createMobileMenuContent() {
-    // Проверяем, не создано ли уже меню
-    if (document.getElementById('mobile-menu')) return;
+    // Создаем кнопку гамбургера
+    const hamburger = document.createElement('label');
+    hamburger.htmlFor = 'menu-toggle';
+    hamburger.id = 'mobile-hamburger';
+    hamburger.className = 'mobile-hamburger-btn';
+    hamburger.innerHTML = '<span></span><span></span><span></span>';
     
-    // Создаем контейнер меню
+    // Создаем мобильное меню
     const mobileMenu = document.createElement('div');
-    mobileMenu.id = 'mobile-menu';
-    mobileMenu.className = 'mobile-menu';
+    mobileMenu.className = 'mobile-menu-wrapper';
     
-    // Создаем список меню
-    const menuList = document.createElement('ul');
+    // Создаем контент меню
+    const menuContent = document.createElement('div');
+    menuContent.className = 'mobile-menu-content';
     
-    // Получаем ссылки из основной навигации
-    const navLinks = [
-        { href: '/mastyxx/index.html', text: 'Главная' },
-        { href: '/mastyxx/Masters/masters.html', text: 'Мастера' },
-        { href: '/mastyxx/price/price.html', text: 'Прайс' },
-        { href: '/mastyxx/stock/stock.html', text: 'Акции' },
-        { href: '/mastyxx/reviews1/reviews.html', text: 'Отзывы' },
-        { href: '/mastyxx/contacts/contacts.html', text: 'Контакты' }
+    // Добавляем ссылки из навигации
+    const links = [
+        {href: '/mastyxx/index.html', text: 'Главная'},
+        {href: '/mastyxx/Masters/masters.html', text: 'Мастера'},
+        {href: '/mastyxx/price/price.html', text: 'Прайс'},
+        {href: '/mastyxx/stock/stock.html', text: 'Акции'},
+        {href: '/mastyxx/reviews1/reviews.html', text: 'Отзывы'},
+        {href: '/mastyxx/contacts/contacts.html', text: 'Контакты'}
     ];
     
-    // Добавляем ссылки в меню
-    navLinks.forEach(link => {
+    const ul = document.createElement('ul');
+    links.forEach(link => {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = link.href;
         a.textContent = link.text;
-        a.className = 'mobile-menu-link';
         li.appendChild(a);
-        menuList.appendChild(li);
+        ul.appendChild(li);
     });
     
-    mobileMenu.appendChild(menuList);
+    menuContent.appendChild(ul);
+    mobileMenu.appendChild(menuContent);
     
-    // Добавляем меню в body
+    // Добавляем все в body
+    document.body.appendChild(checkbox);
+    document.body.appendChild(hamburger);
     document.body.appendChild(mobileMenu);
+    
+    // Добавляем стили
+    addMobileMenuStyles();
 }
 
-// Настройка обработчиков событий
-function setupEventHandlers() {
-    const hamburgerBtn = document.getElementById('mobile-hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+// Добавление стилей
+function addMobileMenuStyles() {
+    const styleId = 'mobile-menu-final-styles';
+    if (document.getElementById(styleId)) return;
     
-    if (!hamburgerBtn || !mobileMenu) return;
-    
-    // Обработчик клика по гамбургеру
-    hamburgerBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-    });
-    
-    // Закрытие меню при клике на ссылку
-    mobileMenu.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            hamburgerBtn.classList.remove('active');
-            this.classList.remove('active');
-            document.body.classList.remove('menu-open');
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+        /* Скрываем чекбокс */
+        .menu-toggle-checkbox {
+            display: none;
         }
-    });
-    
-    // Закрытие меню при клике вне его
-    document.addEventListener('click', function(e) {
-        if (!mobileMenu.contains(e.target) && 
-            !hamburgerBtn.contains(e.target) && 
-            hamburgerBtn.classList.contains('active')) {
+        
+        /* Кнопка гамбургера - очень простая */
+        .mobile-hamburger-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #856A65;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10000;
+            padding: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .mobile-hamburger-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #856A65;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+        
+        /* Меню */
+        .mobile-menu-wrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 9999;
+            padding-top: 80px;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-content {
+            padding: 20px;
+        }
+        
+        .mobile-menu-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mobile-menu-content li {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .mobile-menu-content a {
+            display: block;
+            padding: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: #856A65;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(133, 106, 101, 0.2);
+        }
+        
+        .mobile-menu-content a:hover {
+            color: #CDAA7D;
+            background: rgba(205, 170, 125, 0.1);
+        }
+        
+        /* Анимация гамбургера */
+        #menu-toggle:checked ~ .mobile-hamburger-btn span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        #menu-toggle:checked ~ .mobile-hamburger-btn span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        #menu-toggle:checked ~ .mobile-hamburger-btn span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        #menu-toggle:checked ~ .mobile-menu-wrapper {
+            display: block;
+        }
+        
+        /* Отключаем прокрутку при открытом меню */
+        #menu-toggle:checked ~ .mobile-menu-wrapper {
+            overflow: hidden;
+        }
+        
+        /* Мобильная адаптация - ПРИОРИТЕТНЫЕ СТИЛИ */
+        @media (max-width: 768px) {
+            /* Показываем гамбургер */
+            .mobile-hamburger-btn {
+                display: block !important;
+            }
             
-            hamburgerBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
+            /* Скрываем оригинальные элементы на мобильных */
+            .header__img,
+            .header__items > nav {
+                display: none !important;
+            }
+            
+            /* ЦЕНТРИРОВАНИЕ ЛОГОТИПА - ГАРАНТИРОВАННО */
+            .header__logo {
+                position: absolute !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                top: 40px !important;
+                margin: 0 !important;
+                width: 70px !important;
+                height: auto !important;
+                z-index: 999 !important;
+            }
+            
+            /* Корректируем хедер */
+            header {
+                position: relative !important;
+                height: 100px !important;
+            }
+            
+            .header__items {
+                position: relative !important;
+                height: 100px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+            
+            /* Центрируем кнопку "Запишись Online" */
+            .bg2 .container a {
+                display: block !important;
+                margin: 25px auto 0 !important;
+                text-align: center !important;
+                width: fit-content !important;
+            }
+            
+            /* Адаптация главного изображения */
+            .main-1 img {
+                height: 250px !important;
+                object-fit: cover !important;
+            }
+            
+            .bg1 {
+                position: absolute !important;
+                top: 30px !important;
+                left: 20px !important;
+                right: 20px !important;
+                text-align: center !important;
+            }
+            
+            .bg1 h1 {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .bg2 {
+                width: 100% !important;
+                margin-left: 0 !important;
+                padding: 30px 20px !important;
+                height: auto !important;
+            }
         }
-    });
+        
+        /* Десктоп - скрываем мобильное меню */
+        @media (min-width: 769px) {
+            .mobile-hamburger-btn,
+            .mobile-menu-wrapper,
+            .menu-toggle-checkbox {
+                display: none !important;
+            }
+            
+            .header__img,
+            .header__items > nav {
+                display: inline-block !important;
+            }
+            
+            .header__logo {
+                position: static !important;
+                transform: none !important;
+                margin-top: -12px !important;
+                margin-bottom: 30px !important;
+                width: auto !important;
+                height: auto !important;
+            }
+        }
+        
+        /* Активная кнопка фильтрации */
+        .main-links button.active {
+            color: #856A65 !important;
+            text-decoration: underline !important;
+            text-decoration-color: #CDAA7D !important;
+        }
+    `;
     
-    // Закрытие меню на Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && hamburgerBtn.classList.contains('active')) {
-            hamburgerBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-    });
+    document.head.appendChild(style);
 }
 
-// Настройка адаптивного макета
-function setupAdaptiveLayout() {
+// Адаптация для мобильных
+function adaptForMobile() {
     const isMobile = window.innerWidth <= 768;
     
-    // Логотип
+    // Принудительно применяем стили для логотипа
     const logo = document.querySelector('.header__logo');
     if (logo) {
         if (isMobile) {
-            // Стили для мобильной версии
+            // Мобильные стили - с очень высоким приоритетом
             logo.style.cssText = `
                 position: absolute !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
-                top: 50% !important;
-                margin-top: -25px !important;
+                top: 40px !important;
+                margin: 0 !important;
                 width: 70px !important;
                 height: auto !important;
                 z-index: 1 !important;
             `;
         } else {
-            // Возвращаем десктопные стили
+            // Десктоп стили
             logo.style.cssText = `
                 position: static !important;
                 left: auto !important;
@@ -241,7 +393,7 @@ function setupAdaptiveLayout() {
         }
     }
     
-    // Кнопка "Запишись Online"
+    // Центрируем кнопку "Запишись Online"
     const onlineBtn = document.querySelector('.bg2 .container a');
     if (onlineBtn && isMobile) {
         onlineBtn.style.cssText = `
@@ -250,217 +402,25 @@ function setupAdaptiveLayout() {
             text-align: center !important;
             width: fit-content !important;
         `;
+    } else if (onlineBtn) {
+        onlineBtn.style.cssText = '';
     }
     
-    // Скрываем/показываем элементы на мобильных
+    // Скрываем/показываем элементы навигации
     const headerImg = document.querySelector('.header__img');
     const headerNavs = document.querySelectorAll('.header__items > nav');
     
     if (isMobile) {
-        // Скрываем VK и навигацию на мобильных
         if (headerImg) headerImg.style.display = 'none';
         headerNavs.forEach(nav => {
             nav.style.display = 'none';
         });
     } else {
-        // Показываем VK и навигацию на десктопе
         if (headerImg) headerImg.style.display = 'block';
         headerNavs.forEach(nav => {
             nav.style.display = 'inline-block';
         });
     }
-}
-
-// Добавление стилей для мобильного меню
-function addMobileStyles() {
-    const styleId = 'mobile-menu-styles';
-    if (document.getElementById(styleId)) return;
-    
-    const style = document.createElement('style');
-    style.id = styleId;
-    
-    style.textContent = `
-        /* Гамбургер-кнопка */
-        .mobile-hamburger {
-            display: none;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: white;
-            border: 1px solid #856A65;
-            border-radius: 4px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .mobile-hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: #856A65;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .mobile-hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-        
-        /* Мобильное меню */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.98);
-            z-index: 1000;
-            padding: 80px 20px 40px;
-            overflow-y: auto;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        
-        .mobile-menu.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .mobile-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .mobile-menu li {
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .mobile-menu-link {
-            display: block;
-            padding: 15px;
-            font-family: 'Cormorant Garamond';
-            font-weight: 600;
-            font-size: 20px;
-            color: #856A65;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(133, 106, 101, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-link:hover {
-            color: #CDAA7D;
-            background: rgba(205, 170, 125, 0.1);
-        }
-        
-        /* Предотвращаем прокрутку при открытом меню */
-        body.menu-open {
-            overflow: hidden;
-        }
-        
-        /* Мобильная версия */
-        @media (max-width: 768px) {
-            .mobile-hamburger {
-                display: flex;
-            }
-            
-            /* Центрирование логотипа */
-            .header__logo {
-                position: absolute !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                top: 50% !important;
-                margin-top: -25px !important;
-                width: 70px !important;
-                z-index: 1 !important;
-            }
-            
-            /* Хедер для мобильных */
-            header {
-                position: relative;
-                height: 80px;
-            }
-            
-            .header__items {
-                position: relative;
-                height: 80px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            /* Адаптация главной секции */
-            .main-1 img {
-                height: 300px !important;
-            }
-            
-            .bg1 {
-                position: absolute !important;
-                top: 30px !important;
-                left: 20px !important;
-                right: 20px !important;
-                text-align: center !important;
-            }
-            
-            .bg1 h1 {
-                font-size: 32px !important;
-                line-height: 1.2 !important;
-            }
-            
-            .bg2 {
-                width: 100% !important;
-                height: auto !important;
-                margin-left: 0 !important;
-                padding: 30px 20px !important;
-            }
-            
-            .bg2 .container {
-                text-align: center !important;
-            }
-            
-            .bg2 .container a {
-                display: inline-block !important;
-                margin: 20px auto 0 !important;
-                text-align: center !important;
-            }
-        }
-        
-        /* Десктопная версия */
-        @media (min-width: 769px) {
-            .mobile-hamburger,
-            .mobile-menu {
-                display: none !important;
-            }
-        }
-        
-        /* Активная кнопка фильтрации */
-        .main-links button.active {
-            color: #856A65 !important;
-            text-decoration: underline !important;
-            text-decoration-color: #CDAA7D !important;
-        }
-    `;
-    
-    document.head.appendChild(style);
 }
 
 // =====================
