@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- Подключаем основной style.css -->
+    <link rel="stylesheet" href="style.css">
     <title>Контакты | Masty</title>
 </head>
 <body id="body">
 
-<!-- ========== МОБИЛЬНЫЙ ХЕДЕР (создаётся через JS) ========== -->
-<!-- Он будет добавлен автоматически скриптом -->
-
+<!-- Обычный десктопный хедер (остаётся как есть) -->
 <header>
     <div class="header__container">
         <div class="header__items">
             <div class="header__img">
                 <button onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; cursor: pointer; outline: none;">
-                    <img src="../VK.svg" alt="VK">
+                    <img src="VK.svg" alt="VK">
                 </button>
             </div>
             
@@ -29,7 +27,7 @@
                 </ul>
             </nav>
             
-            <img class="header__logo" src="../logo.svg" alt="Masty">
+            <img class="header__logo" src="logo.svg" alt="Masty">
             
             <nav>
                 <ul>
@@ -61,8 +59,7 @@
                     height="500" 
                     frameborder="0" 
                     allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    loading="lazy">
                 </iframe>
             </div>
         </div>
@@ -90,10 +87,10 @@
         <div class="social">
             <h2>Мы в социальных сетях</h2>
             <button onclick="window.location.href='https://vk.com/club234239337'">
-                <img src="../VK.png" alt="VK">
+                <img src="VK.png" alt="VK">
             </button>
             <button onclick="window.location.href='https://max.ru'">
-                <img src="../MAX.png" alt="MAX">
+                <img src="MAX.png" alt="MAX">
             </button>
         </div>
     </div>
@@ -105,7 +102,7 @@
     </div>
 </section>
 
-<script src="../script.js"></script>
+<!-- Скрипт подключаем в самом конце body — это критично! -->
+<script src="script.js"></script>
 </body>
 </html>
-
