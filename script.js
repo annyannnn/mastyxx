@@ -185,8 +185,25 @@ function addMobileMenuStyles() {
             /* Центрируем логотип на мобильных */
             .header__logo {
                 order: 1;
-                margin: 0 auto;
-                width: 80px;
+                margin: 0 auto !important;
+                width: 80px !important;
+                position: absolute !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+            }
+            
+            /* Центрируем кнопку "Запишись Online" на мобильных */
+            .bg2 .container {
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .bg2 .container a {
+                display: inline-block !important;
+                margin: 20px auto 0 !important;
+                padding: 12px 30px !important;
+                font-size: 16px !important;
+                text-align: center;
             }
         }
         
@@ -206,6 +223,14 @@ function addMobileMenuStyles() {
             
             .header__img {
                 display: block !important;
+            }
+            
+            .header__logo {
+                position: static !important;
+                transform: none !important;
+                margin-top: -12px !important;
+                margin-bottom: 30px !important;
+                width: auto !important;
             }
         }
     `;
@@ -379,7 +404,123 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btn1) {
         btn1.classList.add('active');
     }
+    
+    // Добавляем адаптивные стили для кнопки "Запишись Online"
+    addAdaptiveStyles();
 });
+
+// Добавляем адаптивные стили
+function addAdaptiveStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Адаптивные стили для мобильной версии */
+        @media (max-width: 768px) {
+            /* Центрируем логотип в хедере */
+            .header__logo {
+                position: absolute !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Центрируем кнопку "Запишись Online" */
+            .bg2 .container {
+                text-align: center;
+                padding: 20px !important;
+            }
+            
+            .bg2 .container a {
+                display: inline-block !important;
+                margin: 20px auto 0 !important;
+                text-align: center;
+                width: auto !important;
+            }
+            
+            /* Адаптируем главный заголовок */
+            .bg1 h1 {
+                text-align: center;
+                font-size: clamp(28px, 8vw, 48px) !important;
+            }
+            
+            /* Адаптируем секцию с услугами */
+            .main-3 {
+                padding: 20px 10px !important;
+            }
+            
+            .main-3 .container {
+                margin-bottom: 20px !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+            }
+            
+            /* Адаптируем галерею */
+            .main-4 {
+                padding: 20px 10px !important;
+            }
+            
+            .main-4 .container div {
+                width: 100% !important;
+                margin-right: 0 !important;
+                margin-bottom: 10px;
+            }
+            
+            .main-4 .container img {
+                margin-right: 0 !important;
+                width: 100% !important;
+                height: auto;
+            }
+            
+            .main-links {
+                width: 100% !important;
+                margin-left: 0 !important;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+            
+            .main-links ul {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .main-links li {
+                margin-right: 15px !important;
+                flex-shrink: 0;
+            }
+            
+            .main-links button {
+                font-size: 18px !important;
+                white-space: nowrap;
+            }
+        }
+        
+        /* Стиль для активной кнопки фильтрации */
+        .main-links button.active {
+            color: #856A65 !important;
+            text-decoration: underline !important;
+            text-decoration-color: #CDAA7D !important;
+        }
+        
+        /* Для планшетов */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .header__items > nav ul {
+                gap: 40px !important;
+            }
+            
+            .main-3 .container {
+                width: 45% !important;
+                margin-right: 10px !important;
+            }
+            
+            .main-4 .container div {
+                width: 30% !important;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
+}
 
 // Обработка изменения размера окна
 window.addEventListener('resize', function() {
@@ -406,54 +547,3 @@ window.addEventListener('resize', function() {
         }
     }
 });
-
-// Добавляем стили для активных кнопок фильтрации
-const style = document.createElement('style');
-style.textContent = `
-    /* Стиль для активной кнопки фильтрации */
-    .main-links button.active {
-        color: #856A65 !important;
-        text-decoration: underline !important;
-        text-decoration-color: #CDAA7D !important;
-    }
-    
-    /* Улучшаем адаптивность галереи */
-    @media (max-width: 768px) {
-        .main-4 .container div {
-            width: 100% !important;
-            margin-right: 0 !important;
-            margin-bottom: 10px;
-        }
-        
-        .main-4 .container img {
-            margin-right: 0 !important;
-            width: 100% !important;
-            height: auto;
-        }
-        
-        .main-links {
-            width: 100% !important;
-            margin-left: 0 !important;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 10px;
-        }
-        
-        .main-links ul {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-        }
-        
-        .main-links li {
-            margin-right: 15px !important;
-            flex-shrink: 0;
-        }
-        
-        .main-links button {
-            font-size: 18px !important;
-            white-space: nowrap;
-        }
-    }
-`;
-document.head.appendChild(style);
