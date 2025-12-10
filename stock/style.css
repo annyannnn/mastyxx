@@ -665,80 +665,87 @@ footer {
 }
 
 /* ===================== */
-/* СТРАНИЦА АКЦИИ — ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ КРУГОВ */
+/* СТРАНИЦА АКЦИИ — ТОЧНО КАК В ОРИГИНАЛЬНОМ style-3.css */
 /* ===================== */
 
 .stock-page {
-    padding: 100px 20px 140px;
+    padding: 120px 20px 160px;
     position: relative;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     overflow: hidden;
+    text-align: center;
 }
 
 .stock-page .container {
     position: relative;
-    z-index: 2;
-    text-align: center;
+    z-index: 2; /* текст поверх кругов */
+    max-width: 1296px;
+    margin: 0 auto;
 }
 
 .stock-page .heading {
     font-family: 'Aref Ruqaa Ink', serif;
     font-weight: 400;
-    font-size: clamp(40px, 7vw, 56px);
+    font-size: clamp(40px, 6vw, 56px);
     color: #856A65;
-    margin-bottom: 50px;
+    margin: 0 auto 80px;
     line-height: 1.2;
 }
 
 .stock-content h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 700;
+    font-size: clamp(26px, 5vw, 32px);
     line-height: 1.5;
     color: #856A65;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* === ДЕКОРАТИВНЫЕ КРУГИ — ТЕПЕРЬ ИДЕАЛЬНО ПО ЦЕНТРУ === */
+/* === ДЕКОРАТИВНЫЕ КРУГИ — ТОЧНО КАК В style-3.css === */
 .ellipse {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-35.53deg);
     pointer-events: none;
-    z-index: 1;
-    width: 800px;
-    height: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ellipse img {
-    width: 380px;
-    height: auto;
-    position: absolute;
+    z-index: 1; /* ниже текста */
+    width: 900px;
+    height: 900px;
+    opacity: 0.8;
 }
 
 .ellipse img:first-child {
-    top: 50px;
-    left: 50px;
+    position: absolute;
+    top: 100px;
+    left: 80px;
+    width: 420px;
 }
 
 .ellipse img:last-child {
-    bottom: 30px;
-    right: 40px;
+    position: absolute;
+    bottom: 80px;
+    right: 100px;
+    width: 420px;
 }
 
-/* Адаптив — круги остаются по центру на всех экранах */
-@media (max-width: 1024px) {
+/* Адаптив — точно как было задумано в оригинале */
+@media (max-width: 1200px) {
     .ellipse {
-        width: 600px;
-        height: 600px;
+        width: 750px;
+        height: 750px;
+    }
+    .ellipse img {
+        width: 350px;
+    }
+    .ellipse img:first-child { top: 80px; left: 60px; }
+    .ellipse img:last-child { bottom: 60px; right: 80px; }
+}
+
+@media (max-width: 992px) {
+    .ellipse {
+        width: 650px;
+        height: 650px;
     }
     .ellipse img {
         width: 300px;
@@ -747,12 +754,17 @@ footer {
 
 @media (max-width: 768px) {
     .stock-page {
-        padding: 80px 15px 100px;
+        padding: 100px 15px 120px;
+    }
+    
+    .stock-page .heading {
+        margin-bottom: 60px;
     }
     
     .ellipse {
-        width: 500px;
-        height: 500px;
+        width: 520px;
+        height: 520px;
+        transform: translate(-50%, -45%) rotate(-35.53deg);
     }
     
     .ellipse img {
@@ -760,20 +772,34 @@ footer {
     }
     
     .ellipse img:first-child {
-        top: 40px;
+        top: 60px;
         left: 40px;
     }
     
     .ellipse img:last-child {
-        bottom: 20px;
-        right: 30px;
+        bottom: 40px;
+        right: 50px;
     }
 }
 
 @media (max-width: 480px) {
+    .stock-page {
+        padding: 80px 15px 100px;
+    }
+    
+    .stock-page .heading {
+        font-size: 36px;
+        margin-bottom: 50px;
+    }
+    
+    .stock-content h2 {
+        font-size: 22px;
+    }
+    
     .ellipse {
-        width: 380px;
-        height: 380px;
+        width: 400px;
+        height: 400px;
+        transform: translate(-50%, -40%) rotate(-35.53deg);
     }
     
     .ellipse img {
@@ -781,22 +807,12 @@ footer {
     }
     
     .ellipse img:first-child {
-        top: 30px;
+        top: 40px;
         left: 20px;
     }
     
     .ellipse img:last-child {
-        bottom: 10px;
-        right: 20px;
-    }
-    
-    .stock-page .heading {
-        font-size: 36px;
-        margin-bottom: 40px;
-    }
-    
-    .stock-content h2 {
-        font-size: 22px;
-        padding: 0 10px;
+        bottom: 20px;
+        right: 30px;
     }
 }
