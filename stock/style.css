@@ -3,240 +3,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
+    height: 100%;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    color: #856A65;
+    background: #fff;
 }
 
 body {
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    color: #856A65;
-    line-height: 1.6;
-    background-color: #fff;
-}
-
-/* ===================== */
-/* ХЕДЕР */
-/* ===================== */
-header {
-    width: 100%;
-    padding-top: 49px;
-    padding-bottom: 20px;
-}
-
-.header__container {
-    width: 100%;
-    max-width: 1296px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.header__items {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.header__img {
-    order: 1;
-    flex: 0 0 auto;
-    margin-left: 0;
-    margin-top: 1px;
-}
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
 
-.header__img button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-}
+/* ===================== ХЕДЕР ===================== */
+header { width: 100%; padding: 49px 20px 20px; }
+.header__container { max-width: 1296px; margin: 0 auto; }
+.header__items { display: flex; align-items: center; justify-content: space-between; position: relative; }
 
-.header__img img {
-    padding-left: 6px;
-}
-
-nav:first-of-type {
-    order: 2;
-    flex: 1;
-    margin-left: 0;
-}
-
-nav:first-of-type ul {
-    display: flex;
-    justify-content: flex-start;
-    gap: 80px;
-    margin-left: 20px;
-}
+.header__img button { background:none; border:none; cursor:pointer; }
+.header__img img { padding-left:6px; }
 
 .header__logo {
-    order: 3;
-    flex: 0 0 auto;
-    margin-top: -12px;
-    margin-bottom: 30px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-}
-
-nav:last-of-type {
-    order: 4;
-    flex: 1;
-    text-align: right;
-}
-
-nav:last-of-type ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 80px;
-    margin-right: 27px;
+    margin-top: -12px;
 }
 
 nav a {
-    font-family: 'Cormorant Garamond';
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 130%;
-    text-decoration: none;
-    color: #856A65;
+    font-weight: 600; font-size: 18px; color: #856A65; text-decoration: none;
     position: relative;
-    white-space: nowrap;
 }
-
 nav a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 1.5px;
-    background-color: #CDAA7D;
-    transition: width 0.35s;
+    content:''; position:absolute; left:0; bottom:-5px; width:0; height:1.5px;
+    background:#CDAA7D; transition:width .35s;
 }
-
-nav a:hover::before {
-    width: 100%;
-}
+nav a:hover::before { width:100%; }
 
 hr {
+    max-width: 1296px; margin: 20px auto 76px; border:1px solid #000; opacity:0.5;
+}
+
+/* Мобильный хедер — логотип по центру */
+@media (max-width: 768px) {
+    .header__logo {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 80px !important;
+        margin: 0 !important;
+    }
+    .menu-toggle { display: flex; }
+    .header__img { display: none; }
+}
+@media (max-width: 480px) { .header__logo { width: 60px !important; } }
+
+/* ===================== КОНТЕНТ ===================== */
+main { flex: 1 0 auto; } /* чтобы футер всегда был внизу */
+
+/* Страница АКЦИИ — 100 % по центру + футер внизу */
+.stock-page {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.stock-page .container {
     width: 100%;
     max-width: 1296px;
-    margin: 20px auto 76px;
-    opacity: 0.5;
-    border: 1px solid #000000;
-}
-
-/* ===================== */
-/* МОБИЛЬНОЕ МЕНЮ */
-/* ===================== */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1000;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #856A65;
-    margin: 3px 0;
-    transition: 0.4s;
-}
-
-/* Медиазапросы хедера */
-@media (max-width: 1200px) {
-    .header__container { padding: 0 30px; }
-    nav:first-of-type ul, nav:last-of-type ul { gap: 40px; }
-}
-
-@media (max-width: 1024px) {
-    .header__logo {
-        position: static;
-        transform: none;
-        order: 1;
-        margin: 0 auto;
-    }
-    .header__items { flex-wrap: wrap; justify-content: center; }
-    .header__img { order: 2; margin-left: 20px; }
-    nav:first-of-type, nav:last-of-type { width: 100%; margin-top: 20px; }
-    nav:first-of-type ul, nav:last-of-type ul { justify-content: center; gap: 60px; margin: 0; }
-}
-
-@media (max-width: 768px) {
-    header { padding-top: 30px; position: relative; }
-    .header__container { padding: 0 15px; }
-    .menu-toggle { display: flex; order: 2; margin-left: auto; }
-    .header__logo {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
-        width: 80px;
-        order: 0;
-    }
-    .header__img { display: none; }
-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; z-index: 999; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-    .mobile-menu-active nav { display: block; }
-    nav ul { flex-direction: column; align-items: center; gap: 20px; }
-    nav a { font-size: 20px; padding: 10px 0; display: block; }
-    hr { margin: 20px auto 40px; }
-}
-
-@media (max-width: 480px) {
-    .header__logo { width: 60px; }
-    nav a { font-size: 18px; }
-}
-
-/* ===================== */
-/* ГЛАВНАЯ СЕКЦИЯ (оставлена как есть) */
-/* ===================== */
-.main-1 { position: relative; width: 100%; overflow: hidden; }
-.main-1 img { width: 100%; height: auto; object-fit: cover; }
-.bg1 { position: absolute; top: 20px; left: 20px; right: 20px; text-align: center; }
-.bg1 h1 { font-family: 'Caudex'; font-weight: 700; font-size: clamp(36px, 8vw, 72px); color: #CABEBC; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-.bg1 span { font-weight: 400; }
-
-/* ... остальные секции (услуги, работы, футер и т.д.) — оставляем без изменений ... */
-
-/* ===================== */
-/* СТРАНИЦА АКЦИЙ — ФИНАЛЬНАЯ ВЕРСИЯ */
-/* ===================== */
-.stock-page .container {
-    max-width: 1296px;
     margin: 0 auto;
-    padding: 140px 20px 160px;
-    text-align: center;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    column;
-    justify-content: center;
-    align-items: center;
 }
 
 .stock-page .heading {
@@ -244,60 +92,54 @@ nav { display: none; position: absolute; top: 100%; left: 0; right: 0; backgroun
     font-weight: 400;
     font-size: clamp(40px, 7vw, 56px);
     color: #856A65;
-    margin: 0 0 60px 0;
-    line-height: 1.2;
+    margin-bottom: 50px;
 }
 
 .stock-content h2 {
-    font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
     font-size: clamp(24px, 5vw, 32px);
     line-height: 1.5;
     color: #856A65;
-    margin: 0;
-    padding: 0 15px;
     max-width: 900px;
+    margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-    .stock-page .container { padding: 100px 15px 120px; }
-    .stock-page .heading { margin-bottom: 50px; }
+    .stock-page { padding: 80px 15px; }
 }
-
 @media (max-width: 480px) {
-    .stock-page .container { padding: 80px 15px 100px; }
     .stock-content h2 { font-size: 22px; }
 }
 
-/* ===================== */
-/* ФУТЕР */
-/* ===================== */
-footer { background: #FDF4F4; border-top: 1px solid #242220; border-bottom: 1px solid #242220; opacity: 0.5; }
+/* ===================== ФУТЕР ===================== */
+footer {
+    flex-shrink: 0;
+    background: #FDF4F4;
+    border-top: 1px solid #242220;
+    border-bottom: 1px solid #242220;
+    opacity: 0.5;
+    margin-top: auto;
+}
+
 .footer__items {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
+
 .footer__img img { width: 70px; }
 .footer__contacts h2, .working__time h2, .social h2 {
-    font-family: 'Cormorant Garamond';
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #856A65;
+    font-weight: 700; font-size: 20px; margin-bottom: 15px; color: #856A65;
 }
+
 .end {
     background: #FDF4F4;
-    padding: 20px;
     text-align: center;
+    padding: 20px;
 }
 .end h1 {
-    font-family: 'Cormorant Garamond';
-    font-weight: 700;
-    font-size: 14px;
-    color: #A6A0A0;
-    opacity: 0.5;
+    font-weight: 700; font-size: 14px; color: #A6A0A0; opacity: 0.5;
 }
