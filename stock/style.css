@@ -665,7 +665,7 @@ footer {
 }
 
 /* ===================== */
-/* СТРАНИЦА АКЦИИ — ТОЧНО КАК В ОРИГИНАЛЬНОМ style-3.css */
+/* СТРАНИЦА АКЦИИ — 1 в 1 как в оригинальном style-3.css */
 /* ===================== */
 
 .stock-page {
@@ -677,7 +677,7 @@ footer {
 
 .stock-page .container {
     position: relative;
-    z-index: 2; /* текст поверх кругов */
+    z-index: 10;                    /* текст всегда сверху */
     max-width: 1296px;
     margin: 0 auto;
 }
@@ -685,134 +685,72 @@ footer {
 .stock-page .heading {
     font-family: 'Aref Ruqaa Ink', serif;
     font-weight: 400;
-    font-size: clamp(40px, 6vw, 56px);
+    font-size: clamp(36px, 6vw, 48px);
     color: #856A65;
     margin: 0 auto 80px;
-    line-height: 1.2;
 }
 
 .stock-content h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
-    font-size: clamp(26px, 5vw, 32px);
-    line-height: 1.5;
+    font-size: clamp(24px, 5vw, 27px);
+    line-height: 140%;
     color: #856A65;
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
 }
 
-/* === ДЕКОРАТИВНЫЕ КРУГИ — ТОЧНО КАК В style-3.css === */
+/* ─────── КРУГИ — ТОЧНО КАК В style-3.css ─────── */
 .ellipse {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-35.53deg);
+    transform: translate(-50%, -50%) rotate(-35.53deg);   /* как было */
     pointer-events: none;
-    z-index: 1; /* ниже текста */
-    width: 900px;
-    height: 900px;
-    opacity: 0.8;
+    z-index: 1;                     /* строго под текстом */
+}
+
+.ellipse img {
+    width: 380px;                     /* оригинальный размер из макета */
+    height: auto;
+    display: block;
 }
 
 .ellipse img:first-child {
-    position: absolute;
-    top: 100px;
-    left: 80px;
-    width: 420px;
+    margin-top: -391px;               /* точное значение из style-3.css */
+    margin-left: 90px;                /* точное значение из style-3.css */
 }
 
 .ellipse img:last-child {
-    position: absolute;
-    bottom: 80px;
-    right: 100px;
-    width: 420px;
+    margin-top: -391px;
+    margin-left: 210px;               /* 90px + 120px отступ между кругами */
 }
 
-/* Адаптив — точно как было задумано в оригинале */
+/* Адаптив — круги уменьшаются пропорционально, но остаются в том же месте */
 @media (max-width: 1200px) {
-    .ellipse {
-        width: 750px;
-        height: 750px;
-    }
-    .ellipse img {
-        width: 350px;
-    }
-    .ellipse img:first-child { top: 80px; left: 60px; }
-    .ellipse img:last-child { bottom: 60px; right: 80px; }
+    .ellipse img { width: 320px; }
+    .ellipse img:first-child { margin-top: -330px; margin-left: 70px; }
+    .ellipse img:last-child  { margin-left: 170px; }
 }
 
 @media (max-width: 992px) {
-    .ellipse {
-        width: 650px;
-        height: 650px;
-    }
-    .ellipse img {
-        width: 300px;
-    }
+    .ellipse img { width: 280px; }
+    .ellipse img:first-child { margin-top: -290px; margin-left: 50px; }
+    .ellipse img:last-child  { margin-left: 140px; }
 }
 
 @media (max-width: 768px) {
-    .stock-page {
-        padding: 100px 15px 120px;
-    }
-    
-    .stock-page .heading {
-        margin-bottom: 60px;
-    }
-    
-    .ellipse {
-        width: 520px;
-        height: 520px;
-        transform: translate(-50%, -45%) rotate(-35.53deg);
-    }
-    
-    .ellipse img {
-        width: 240px;
-    }
-    
-    .ellipse img:first-child {
-        top: 60px;
-        left: 40px;
-    }
-    
-    .ellipse img:last-child {
-        bottom: 40px;
-        right: 50px;
-    }
+    .stock-page { padding: 100px 15px 120px; }
+    .ellipse img { width: 220px; }
+    .ellipse img:first-child { margin-top: -240px; margin-left: 30px; }
+    .ellipse img:last-child  { margin-left: 110px; }
 }
 
 @media (max-width: 480px) {
-    .stock-page {
-        padding: 80px 15px 100px;
-    }
-    
-    .stock-page .heading {
-        font-size: 36px;
-        margin-bottom: 50px;
-    }
-    
-    .stock-content h2 {
-        font-size: 22px;
-    }
-    
-    .ellipse {
-        width: 400px;
-        height: 400px;
-        transform: translate(-50%, -40%) rotate(-35.53deg);
-    }
-    
-    .ellipse img {
-        width: 180px;
-    }
-    
-    .ellipse img:first-child {
-        top: 40px;
-        left: 20px;
-    }
-    
-    .ellipse img:last-child {
-        bottom: 20px;
-        right: 30px;
-    }
+    .ellipse img { width: 170px; }
+    .ellipse img:first-child { margin-top: -190px; margin-left: 15px; }
+    .ellipse img:last-child  { margin-left: 85px; }
+    .stock-page .heading { margin-bottom: 60px; }
+    .stock-content h2 { font-size: 22px; }
 }
