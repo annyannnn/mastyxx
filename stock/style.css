@@ -2,319 +2,172 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap');
-* {
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Alegreya:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Aref+Ruqaa+Ink:wght@400;700&display=swap');
 
-ul {
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; overflow-x: hidden; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+body { font-family: 'Cormorant Garamond', serif; color: #856A65; background: #fff; }
 
-img {
-    margin: 0;
-    padding: 0;
-}
-
+/* ===================== ХЕДЕР ===================== */
 header {
-    width: 1296px;
+    width: 100%;
+    padding: 49px 20px 20px;
+    position: relative;
+}
+
+.header__container {
+    max-width: 1296px;
     margin: 0 auto;
-    padding-top: 49px;
+    position: relative;
 }
-body{
-    margin-bottom: 0;
-}
-
-
-
 
 .header__items {
     display: flex;
-    justify-content: space-around;
-    margin-right: 27px;
-    /* flex: 1 1 auto; */
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+}
 
+.header__img button {
+    background: none; border: none; cursor: pointer; padding: 0;
 }
 
 .header__logo {
-    margin-top: -12px;
-    margin-bottom: 30px;
-
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    z-index: 10;
 }
 
-
-
-.header__items li {
-    display: inline-block;
-    margin-right: 80px;
-
-
+nav ul {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-
-
-.header__img {
-    margin-top: 1px;
-    margin-left: -50px;
-}
-
-.header__img img {
-    padding-left: 6px;
-}
-
-nav {
-    display: inline-block;
-
-}
-
-nav li a {
-    font-family: 'Cormorant Garamond';
-    font-style: normal;
+nav a {
     font-weight: 600;
     font-size: 18px;
-    line-height: 130%;
-    /* or 23px */
-    text-decoration: none;
-
-
     color: #856A65;
-}
-
-hr {
-    margin-bottom: 76px;
-    width: 1296px;
-    opacity: 0.5;
-    border: 1px solid #000000;
-}
-
-nav ul :last-child {
-    margin-right: 20px;
-}
-
-
-
-a {
-    position: relative;
-    color: #484848;
-    font-size: 1.25rem;
     text-decoration: none;
+    position: relative;
 }
 
-a::before {
+nav a::before {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 1.5px;
-    background-color: #CDAA7D;
-}
-
-a:hover:before {
-    width: 100%;
-}
-
-a::before {
+    left: 0; bottom: -5px;
+    width: 0; height: 1.5px;
+    background: #CDAA7D;
     transition: width 0.35s;
 }
 
-.section {
-    width: 1296px;
+nav a:hover::before { width: 100%; }
 
+hr {
+    max-width: 1296px;
+    margin: 20px auto 76px;
+    border: 1px solid #000;
+    opacity: 0.5;
 }
 
-.heading {
-    
-    margin-left: 29px;
-    margin-bottom: 80px;
-
-    text-align: center;
-    font-family: 'Aref Ruqaa Ink';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 120%;
-    /* identical to box height, or 58px */
-
-    text-align: center;
-
-    color: #856A65;
+/* Гамбургер */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
 }
 
-
-.main-1 h2{
-    font-family: 'Cormorant Garamond';
-font-style: normal;
-font-weight: 700;
-font-size: 27px;
-line-height: 130%;
-/* identical to box height, or 35px */
-text-align: center;
-
-color: #856A65;
-margin-bottom: 221px;
-margin-top: 120px;
-}
-.ellipse {
-    position: absolute;
-    margin-top: -391px;
-    margin-left: 90px;
-    transform: rotate(-35.53deg);
-}
-.ellipse img{
-    margin-right: 120px;
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: #856A65;
+    border-radius: 2px;
+    transition: all 0.3s;
 }
 
+.menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-
-
-
-.footer__img img{
-    width: 70px;
-    height: 64.24px;
-    margin-left: 128px;
-    margin-right: 100px;
-    z-index: 1;
+/* ===================== ФУТЕР ===================== */
+footer {
+    background: #FDF4F4;
+    border-top: 1px solid #242220;
+    border-bottom: 1px solid #242220;
+    opacity: 0.5;
+    padding: 77px 20px;
 }
 
 .footer__items {
-    border-top: 1px solid #242220;
-    border-bottom: 1px solid #242220;
-    padding-top: 77px;
-    background: #FDF4F4;
-    padding-bottom: 77px;
-    padding-right: 94px;
-    opacity: 0.5;
-    width: 1296px;
+    max-width: 1296px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-
-}
-
-li {
-    list-style: none;
-}
-
-.footer__contacts {
-    margin-left: -115px;
-
-}
-
-.footer__contacts li {
-    margin-top: 17px;
-    cursor: pointer;
-}
-
-.footer__contacts li:last-child {
-    
-    cursor: auto;
-}
-.working__time {
-    margin-left: -139px
-}
-.working__time li {
-
-    margin-top: 17px;
-    
-}
-
-.social {
-    padding-right: 49px;
-    
-}
-.social img {
-    cursor: pointer;
-}
-.end{
-    width: 1296px;
-    height: 59px;
-    margin: 0 auto;
-    background: #FDF4F4;
-
-}
-.end h1{
-   padding-top: 15px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
     text-align: center;
-    font-family: 'Cormorant Garamond';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 140%;
-/* or 25px */
-
-text-align: center;
-
-color: #A6A0A0;
-
-opacity: 0.5;
-    
-
 }
 
-/* ===================== */
-/* СТРАНИЦА АКЦИЙ        */
-/* ===================== */
-
-.stock-section {
-    position: relative;
-    text-align: center;
-    padding: 80px 20px 150px;
-    min-height: 70vh;
-}
-
-.stock-section h2 {
-    font-family: 'Cormorant Garamond', serif;
+.footer__contacts h2,
+.working__time h2,
+.social h2 {
     font-weight: 700;
-    font-size: clamp(24px, 5vw, 32px);
-    line-height: 140%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.footer__contacts li,
+.working__time li {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.social button {
+    background: none; border: none; cursor: pointer; width: 40px; height: 40px;
+}
+
+.end {
+    background: #FDF4F4;
+    text-align: center;
+    padding: 20px;
+    font-weight: 700;
+    color: #A6A0A0;
+    opacity: 0.5;
+}
+
+/* ===================== ЗАГОЛОВКИ ===================== */
+.heading {
+    font-family: 'Aref Ruqaa Ink', serif;
+    font-size: clamp(36px, 6vw, 48px);
+    text-align: center;
     color: #856A65;
-    margin: 0 auto;
-    max-width: 900px;
+    margin: 80px 0 60px;
 }
 
-.ellipse {
-    position: absolute;
-    bottom: -80px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-35.53deg);
-    display: flex;
-    gap: 120px;
-    pointer-events: none;
-    z-index: -1;
+/* ===================== МОБИЛЬНАЯ АДАПТАЦИЯ ===================== */
+@media (max-width: 1024px) {
+    nav ul { gap: 40px; }
+    .header__logo { position: static; transform: none; order: -1; margin: 0 auto; }
 }
 
-.ellipse img {
-    width: 180px;
-    height: auto;
-    opacity: 0.7;
-}
-
-/* Адаптация под мобильные */
 @media (max-width: 768px) {
-    .stock-section {
-        padding: 60px 20px 120px;
-    }
-
-    .ellipse {
-        bottom: -50px;
-        gap: 60px;
-        transform: translateX(-50%) rotate(-35.53deg) scale(0.8);
-    }
-
-    .ellipse img {
-        width: 140px;
-    }
+    .menu-toggle { display: flex; }
+    nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; padding-top: 100px; z-index: 1000; }
+    nav.active { display: block; }
+    nav ul { flex-direction: column; align-items: center; gap: 30px; font-size: 24px; }
+    .header__img { display: none; }
+    .header__logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    body.menu-open { overflow: hidden; }
 }
 
-@media (max-width: 480px) {
-    .ellipse {
-        gap: 40px;
-        transform: translateX(-50%) rotate(-35.53deg) scale(0.7);
-    }
-
-    .ellipse img {
-        width: 120px;
-    }
-}
+/* Стили для price.html и stock.html — добавь в этот же файл */
+.
