@@ -260,66 +260,61 @@ opacity: 0.5;
 .stock-section {
     position: relative;
     text-align: center;
-    padding: 100px 20px 150px;
+    padding: 80px 20px 150px;
     min-height: 70vh;
-    overflow: hidden;
 }
 
-.stock-content h2 {
+.stock-section h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
-    font-size: clamp(26px, 4vw, 32px);
+    font-size: clamp(24px, 5vw, 32px);
     line-height: 140%;
     color: #856A65;
-    max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px;
+    max-width: 900px;
 }
 
-.stock-ellipses {
+.ellipse {
     position: absolute;
     bottom: -80px;
     left: 50%;
     transform: translateX(-50%) rotate(-35.53deg);
+    display: flex;
+    gap: 120px;
     pointer-events: none;
     z-index: -1;
 }
 
-.stock-ellipses img {
-    height: 300px;
-    width: auto;
+.ellipse img {
+    width: 180px;
+    height: auto;
     opacity: 0.7;
-}
-
-.ellipse-1 {
-    margin-right: 120px;
 }
 
 /* Адаптация под мобильные */
 @media (max-width: 768px) {
     .stock-section {
-        padding: 80px 20px 120px;
+        padding: 60px 20px 120px;
     }
 
-    .stock-ellipses {
+    .ellipse {
         bottom: -50px;
+        gap: 60px;
+        transform: translateX(-50%) rotate(-35.53deg) scale(0.8);
     }
 
-    .stock-ellipses img {
-        height: 200px;
-    }
-
-    .ellipse-1 {
-        margin-right: 80px;
+    .ellipse img {
+        width: 140px;
     }
 }
 
 @media (max-width: 480px) {
-    .stock-ellipses img {
-        height: 150px;
+    .ellipse {
+        gap: 40px;
+        transform: translateX(-50%) rotate(-35.53deg) scale(0.7);
     }
 
-    .ellipse-1 {
-        margin-right: 60px;
+    .ellipse img {
+        width: 120px;
     }
 }
