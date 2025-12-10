@@ -664,257 +664,139 @@ footer {
     opacity: 0.5;
 }
 
-/* ... предыдущий CSS код ... */
-
-/* Добавляем в конец файла или в соответствующее место */
-
 /* ===================== */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ */
-/* ===================== */
-
-@media (max-width: 768px) {
-    /* Центрируем логотип в хедере на мобильных */
-    .header__items {
-        position: relative;
-        min-height: 80px;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 0 15px !important;
-    }
-    
-    .header__logo {
-        position: absolute !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        margin: 0 !important;
-        width: 80px !important;
-        height: auto !important;
-        order: 0 !important;
-    }
-    
-    .menu-toggle {
-        display: flex !important;
-        order: 2 !important;
-        margin-left: auto !important;
-    }
-    
-    .header__img {
-        display: none !important;
-    }
-    
-    /* Центрируем кнопку "Запишись Online" на мобильных */
-    .bg2 .container {
-        text-align: center !important;
-        padding: 20px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        height: 100% !important;
-    }
-    
-    .bg2 .container a {
-        display: inline-block !important;
-        margin: 20px auto 0 !important;
-        padding: 12px 30px !important;
-        text-align: center !important;
-        width: auto !important;
-        max-width: 250px !important;
-    }
-    
-    /* Адаптация главной секции */
-    .main-1 {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    .main-1 img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 300px !important;
-        object-fit: cover !important;
-    }
-    
-    .bg1 {
-        position: absolute !important;
-        margin-left: 0 !important;
-        margin-top: -320px !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 0 20px !important;
-    }
-    
-    .bg1 h1 {
-        font-size: 36px !important;
-        line-height: 1.2 !important;
-    }
-    
-    .bg2 {
-        width: 100% !important;
-        height: auto !important;
-        margin-left: 0 !important;
-        padding: 30px 20px !important;
-    }
-    
-    .main-1 .container {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        margin-left: 0 !important;
-        margin-top: 0 !important;
-        padding: 0 15px !important;
-    }
-    
-    /* Адаптация навигации хедера */
-    .header__items > nav {
-        display: none !important;
-    }
-    
-    .mobile-menu-active .header__items > nav {
-        display: block !important;
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        right: 0 !important;
-        background: white !important;
-        z-index: 1000 !important;
-        padding: 20px !important;
-    }
-    
-    .mobile-menu-active .header__items > nav ul {
-        flex-direction: column !important;
-        gap: 15px !important;
-    }
-    
-    .mobile-menu-active .header__items > nav li {
-        margin-right: 0 !important;
-        text-align: center !important;
-    }
-}
-
-/* Для очень маленьких экранов */
-@media (max-width: 480px) {
-    .header__logo {
-        width: 60px !important;
-    }
-    
-    .bg1 h1 {
-        font-size: 28px !important;
-    }
-    
-    .bg1 span {
-        font-size: 28px !important;
-    }
-    
-    .bg2 .container p {
-        font-size: 16px !important;
-    }
-    
-    .bg2 .container a {
-        font-size: 16px !important;
-        padding: 10px 20px !important;
-    }
-}
-
-/* ===================== */
-/* СТРАНИЦА АКЦИИ        */
+/* СТРАНИЦА АКЦИИ — ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ КРУГОВ */
 /* ===================== */
 
 .stock-page {
-    padding: 80px 20px 120px;
+    padding: 100px 20px 140px;
     position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
+}
+
+.stock-page .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
 }
 
 .stock-page .heading {
     font-family: 'Aref Ruqaa Ink', serif;
     font-weight: 400;
-    font-size: clamp(36px, 6vw, 48px);
-    text-align: center;
+    font-size: clamp(40px, 7vw, 56px);
     color: #856A65;
-    margin-bottom: 60px;
-}
-
-.stock-content {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
+    margin-bottom: 50px;
+    line-height: 1.2;
 }
 
 .stock-content h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: clamp(24px, 5vw, 32px);
-    line-height: 1.4;
+    font-weight: 600;
+    font-size: clamp(24px, 5vw, 34px);
+    line-height: 1.5;
     color: #856A65;
-    margin: 0;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Декоративные эллипсы */
+/* === ДЕКОРАТИВНЫЕ КРУГИ — ТЕПЕРЬ ИДЕАЛЬНО ПО ЦЕНТРУ === */
 .ellipse {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-35.53deg);
     pointer-events: none;
-    z-index: -1;
-    opacity: 0.7;
+    z-index: 1;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ellipse img {
-    width: 300px;
+    width: 380px;
     height: auto;
+    position: absolute;
+}
+
+.ellipse img:first-child {
+    top: 50px;
+    left: 50px;
 }
 
 .ellipse img:last-child {
-    margin-left: -120px;
-    margin-top: 80px;
+    bottom: 30px;
+    right: 40px;
 }
 
-/* Адаптив */
+/* Адаптив — круги остаются по центру на всех экранах */
+@media (max-width: 1024px) {
+    .ellipse {
+        width: 600px;
+        height: 600px;
+    }
+    .ellipse img {
+        width: 300px;
+    }
+}
+
 @media (max-width: 768px) {
     .stock-page {
-        padding: 60px 15px 80px;
+        padding: 80px 15px 100px;
     }
-
-    .stock-page .heading {
-        margin-bottom: 40px;
-    }
-
-    .stock-content h2 {
-        font-size: 24px;
-    }
-
+    
     .ellipse {
-        transform: translate(-50%, -50%) rotate(-35.53deg) scale(0.7);
+        width: 500px;
+        height: 500px;
     }
-
+    
     .ellipse img {
-        width: 200px;
+        width: 240px;
     }
-
+    
+    .ellipse img:first-child {
+        top: 40px;
+        left: 40px;
+    }
+    
     .ellipse img:last-child {
-        margin-left: -80px;
-        margin-top: 60px;
+        bottom: 20px;
+        right: 30px;
     }
 }
 
 @media (max-width: 480px) {
     .ellipse {
-        transform: translate(-50%, -50%) rotate(-35.53deg) scale(0.5);
+        width: 380px;
+        height: 380px;
     }
-
+    
     .ellipse img {
-        width: 150px;
+        width: 180px;
     }
-
+    
+    .ellipse img:first-child {
+        top: 30px;
+        left: 20px;
+    }
+    
     .ellipse img:last-child {
-        margin-left: -60px;
+        bottom: 10px;
+        right: 20px;
+    }
+    
+    .stock-page .heading {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+    
+    .stock-content h2 {
+        font-size: 22px;
+        padding: 0 10px;
     }
 }
-
