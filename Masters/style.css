@@ -822,13 +822,14 @@ footer {
 }
 
 /* ===================== */
-/* СТРАНИЦА МАСТЕРОВ — ФИНАЛЬНАЯ ВЕРСИЯ */
+/* СТРАНИЦА МАСТЕРОВ — ИДЕАЛЬНО ПО ЦЕНТРУ НА ЛЮБОМ ЭКРАНЕ */
 /* ===================== */
 
 .masters-page {
     padding-top: 40px;
 }
 
+/* Заголовок "Наши мастера" */
 .masters-hero {
     text-align: center;
     padding: 40px 20px 60px;
@@ -841,20 +842,30 @@ footer {
     color: #856A65;
 }
 
-/* Сетка мастеров */
-.masters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 60px 40px;
-    max-width: 1360px;
+/* Обёртка, чтобы грид был строго по центру страницы */
+.masters-wrapper {
+    width: 100%;
+    max-width: 1400px;          /* чуть шире, чем раньше */
     margin: 0 auto;
-    padding: 0 20px 80px;
-    justify-items: center;          /* Горизонтальное центрирование карточек */
+    padding: 0 20px;
 }
 
+/* Сам грид мастеров */
+.masters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 380px));
+    gap: 60px 40px;
+    justify-content: center;     /* Главное — центрируем колонки */
+    justify-content */
+    justify-items: center;       /* дополнительно центрируем содержимое карточек */
+    width: 100%;
+    padding-bottom: 80px;
+}
+
+/* Карточка мастера */
 .master-card {
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
     text-align: center;
 }
 
@@ -864,7 +875,7 @@ footer {
     border: 2px solid transparent;
     transition: border 0.3s ease;
     display: block;
-    margin: 0 auto;
+    border-radius: 4px;
 }
 
 .master-card:hover img {
@@ -887,16 +898,11 @@ footer {
     margin: 0;
 }
 
-/* Блок без акций — идеально по центру */
+/* Блок «Акции» — тоже строго по центру */
 .no-stock {
     background: #FDF4F4;
     padding: 100px 20px;
     text-align: center;
-}
-
-.no-stock .container {
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
 .no-stock h2 {
@@ -912,9 +918,11 @@ footer {
     font-size: 20px;
     line-height: 1.6;
     color: #856A65;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Мобильная адаптация */
+/* Мобильные экраны */
 @media (max-width: 768px) {
     .masters-grid {
         grid-template-columns: 1fr;
