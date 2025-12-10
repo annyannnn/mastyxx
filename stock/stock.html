@@ -4,40 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Акции — Салон красоты «Masty»</title>
+    <link rel="stylesheet" href="../style.css"> <!-- один общий style.css -->
+    <title>Акции | Masty</title>
 </head>
 <body id="body">
 
-<!-- ТОЧНО ТАКОЙ ЖЕ ХЕДЕР, КАК НА index.html и price.html -->
 <header>
     <div class="header__container">
         <div class="header__items">
             <div class="header__img">
-                <button onclick="window.location.href='https://vk.com/club234239337'" 
-                        style="background:none;border:none;cursor:pointer;outline:none;">
-                    <img src="VK.svg" alt="VK">
+                <button onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; cursor: pointer; outline: none;">
+                    <img src="../VK.svg" alt="VK">
                 </button>
             </div>
-
+            
             <nav>
                 <ul>
-                    <li><a href="/mastyxx/index.html">Главная</a></li>
-                    <li><a href="/mastyxx/Masters/masters.html">Мастера</a></li>
-                    <li><a href="/mastyxx/price/price.html">Прайс</a></li>
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="../Masters/masters.html">Мастера</a></li>
+                    <li><a href="../price/price.html">Прайс</a></li>
                 </ul>
             </nav>
-
-            <img class="header__logo" src="logo.svg" alt="Masty">
-
+            
+            <img class="header__logo" src="../logo.svg" alt="Masty">
+            
             <nav>
                 <ul>
-                    <li><a href="/mastyxx/stock/stock.html">Акции</a></li>
-                    <li><a href="/mastyxx/reviews1/reviews.html">Отзывы</a></li>
-                    <li><a href="/mastyxx/contacts/contacts.html">Контакты</a></li>
+                    <li><a href="../stock/stock.html">Акции</a></li>
+                    <li><a href="../reviews1/reviews.html">Отзывы</a></li>
+                    <li><a href="../contacts/contacts.html">Контакты</a></li>
                 </ul>
             </nav>
-
+            
             <div class="menu-toggle" id="mobile-menu">
                 <span></span>
                 <span></span>
@@ -49,22 +47,25 @@
 </header>
 
 <main class="main">
-    <h1 class="heading">Акции</h1>
+    <section class="stock-page">
+        <div class="container">
+            <h1 class="heading">Акции</h1>
+            
+            <div class="stock-content">
+                <h2>Сейчас в салонах нет действующих акций.<br>Следите за нашими обновлениями :)</h2>
+            </div>
 
-    <section class="stock-section">
-        <h2>Сейчас в салоне нет действующих акций.<br>Следите за нашими обновлениями :)</h2>
-        
-        <div class="ellipse">
-            <img src="ellipse-1.png" alt="">
-            <img src="ellipse-2.png" alt="">
+            <div class="ellipse">
+                <img src="../ellipse-1.png" alt="">
+                <img src="../ellipse-2.png" alt="">
+            </div>
         </div>
     </section>
 </main>
 
-<!-- ТОЧНО ТАКОЙ ЖЕ ФУТЕР, КАК НА ВСЕХ СТРАНИЦАХ -->
 <footer>
     <div class="footer__items">
-        <div class="footer__img"><img src="footer__logo.svg" alt="Masty"></div>
+        <div class="footer__img"><img src="../footer__logo.svg" alt=""></div>
         <div class="footer__contacts">
             <h2>Контакты</h2>
             <ul>
@@ -76,19 +77,17 @@
         <div class="working__time">
             <h2>Режим работы</h2>
             <ul>
-                <li>C 10:00 до 21:00 (Пн-Пт)</li>
+                <li>С 10:00 до 21:00 (Пн-Пт)</li>
                 <li>С 11:00 до 20:00 (Сб-Вс)</li>
             </ul>
         </div>
         <div class="social">
             <h2>Мы в социальных сетях</h2>
-            <button onclick="window.location.href='https://vk.com/club234239337'" 
-                    style="background:none;border:none;padding:0;cursor:pointer;outline:none;">
-                <img src="VK.png" alt="VK">
+            <button onclick="window.location.href='https://vk.com/club234239337'" style="background:none;border:none;padding:0;cursor:pointer;">
+                <img src="../VK.png" alt="VK">
             </button>
-            <button onclick="window.location.href='https://max.ru'" 
-                    style="background:none;border:none;padding:0;cursor:pointer;outline:none;">
-                <img src="MAX.png" alt="MAX">
+            <button onclick="window.location.href='https://max.ru'" style="background:none;border:none;padding:0;cursor:pointer;">
+                <img src="../MAX.png" alt="MAX">
             </button>
         </div>
     </div>
@@ -100,6 +99,6 @@
     </div>
 </section>
 
-<script src="script.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>
