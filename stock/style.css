@@ -665,38 +665,58 @@ footer {
 }
 
 /* ===================== */
-/* СТРАНИЦА АКЦИИ — 1 в 1 как в оригинальном style-3.css */
+/* СТРАНИЦА АКЦИИ — ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ТЕКСТА */
 /* ===================== */
 
-.stock-page {
-    padding: 120px 20px 160px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
 .stock-page .container {
-    position: relative;
-    z-index: 10;                    /* текст всегда сверху */
     max-width: 1296px;
     margin: 0 auto;
+    padding: 140px 20px 160px;
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .stock-page .heading {
     font-family: 'Aref Ruqaa Ink', serif;
     font-weight: 400;
-    font-size: clamp(36px, 6vw, 48px);
+    font-size: clamp(40px, 7vw, 56px);
     color: #856A65;
-    margin: 0 auto 80px;
+    margin: 0 0 60px 0;
+    line-height: 1.2;
 }
 
 .stock-content h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
-    font-size: clamp(24px, 5vw, 27px);
-    line-height: 140%;
+    font-size: clamp(24px, 5vw, 32px);
+    line-height: 1.5;
     color: #856A65;
-    max-width: 900px;
-    margin: 0 auto;
+    margin: 0;
     padding: 0 15px;
+    max-width: 900px;
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+    .stock-page .container {
+        padding: 100px 15px 120px;
+    }
+    
+    .stock-page .heading {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stock-page .container {
+        padding: 80px 15px 100px;
+    }
+    
+    .stock-content h2 {
+        font-size: 22px;
+    }
 }
