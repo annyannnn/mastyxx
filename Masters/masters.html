@@ -1,97 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="style.css">
-	<title>Masters</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css"> <!-- тот же style.css, что и на главной -->
+    <title>Мастера | Masty</title>
 </head>
 <body>
+
+<!-- Тот же хедер, что и на index.html -->
 <header>
-    <div class="header__items">
-        <div class="header__img">
-            <button onclick= "window.location.href='https://vk.com/club234239337'" style="background: none; border: none; cursor: pointer; outline: none;">
-                <img src="/mastyxx/Masters/img/VK.svg" alt="">
-            </button></div>
-        
-        <nav><ul><li><a href="/mastyxx/index.html">Главная</a> </li>
-        <li><a href="/mastyxx/Masters/masters.html">Мастера</a> </li>
-        <li><a href="/mastyxx/price/price.html">Прайс</a> </li></ul></nav>
-        <img class="header__logo" src="/mastyxx/Masters/img/logo.svg" alt="">
-        <nav><ul><li><a href="/mastyxx/stock/stock.html">Акции</a> </li>
-        <li><a href="/mastyxx/reviews1/reviews.html">Отзывы</a> </li>
-        <li><a href="/mastyxx/contacts/contacts.html">Контакты</a> </li></ul></nav>
+    <div class="header__container">
+        <div class="header__items">
+            <div class="header__img">
+                <button onclick="window.location.href='https://vk.com/club234239337'" style="background:none;border:none;cursor:pointer;outline:none;">
+                    <img src="../VK.svg" alt="VK">
+                </button>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="masters.html">Мастера</a></li>
+                    <li><a href="../price/price.html">Прайс</a></li>
+                </ul>
+            </nav>
+
+            <img class="header__logo" src="../logo.svg" alt="Masty">
+
+            <nav>
+                <ul>
+                    <li><a href="../stock/stock.html">Акции</a></li>
+                    <li><a href="../reviews1/reviews.html">Отзывы</a></li>
+                    <li><a href="../contacts/contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
     <hr>
-</header> 
-<section>
-    <h2>Наши Мастера</h2>
-    <div class="conteiner">
-   	    <div class = "masters">
-            <div class = "font"></div>
-            <img src="img/masters/Pavlova.png">
-            <h4>АННА ПАВЛОВА</h4>
-            <h5>Эстетист-масажист</h5>
+</header>
+
+<main class="masters-page">
+    <section class="masters-hero">
+        <h1>Наши мастера</h1>
+    </section>
+
+    <section class="masters-grid container">
+        <div class="master-card">
+            <img src="img/masters/Pavlova.png" alt="Анна Павлова">
+            <h3>АННА ПАВЛОВА</h3>
+            <p>Эстетист-массажист</p>
         </div>
-        <div class = "masters">
-            <img src="img/masters/Rotar.png">
-            <h4>ЮЛИЯ РОТАРЬ</h4>
-            <h5>Стилист</h5>
+        <div class="master-card">
+            <img src="img/masters/Rotar.png" alt="Юлия Ротарь">
+            <h3>ЮЛИЯ РОТАРЬ</h3>
+            <p>Стилист</p>
         </div>
-        <div class = "masters">
-            <img src="img/masters/Ponulak.png">
-            <h4>НАТАЛИЯ ПОНУЛЯК </h4>
-            <h5>Администратор</h5>
+        <div class="master-card">
+            <img src="img/masters/Ponulak.png" alt="Наталия Понуляк">
+            <h3>НАТАЛИЯ ПОНУЛЯК</h3>
+            <p>Администратор</p>
         </div>
-        <div class = "masters">
-            <img src="img/masters/Dahno.png">
-            <h4>АНАСТАСИЯ ДАХНО</h4>
-            <h5>Мастер ногтевого сервиса</h5>
+        <div class="master-card">
+            <img src="img/masters/Dahno.png" alt="Анастасия Дахно">
+            <h3>АНАСТАСИЯ ДАХНО</h3>
+            <p>Мастер ногтевого сервиса</p>
         </div>
-        <div class = "masters">
-            <img src="img/masters/Shtern.png">
-            <h4>НАТАЛЬЯ ШТЕРН</h4>
-            <h5>Косметолог</h5>
+        <div class="master-card">
+            <img src="img/masters/Shtern.png" alt="Наталья Штерн">
+            <h3>НАТАЛЬЯ ШТЕРН</h3>
+            <p>Косметолог</p>
         </div>
-        <div class = "masters">
-            <img src="img/masters/Mishenko.png">
-            <h4>МАРИНА МИЩЕНКО</h4>
-            <h5>Визажист</h5>
+        <div class="master-card">
+            <img src="img/masters/Mishenko.png" alt="Марина Мищенко">
+            <h3>МАРИНА МИЩЕНКО</h3>
+            <p>Визажист</p>
         </div>
-    </div>
-   </section>
-   <footer>
+    </section>
+
+    <!-- Блок «Акции» с центрированным текстом -->
+    <section class="no-stock">
+        <div class="container">
+            <h2>Акции</h2>
+            <p>Сейчас в салоне нет действующих акций.<br>
+               Следите за нашими обновлениями в социальных сетях!</p>
+        </div>
+    </section>
+</main>
+
+<!-- Тот же футер, что и на главной -->
+<footer>
     <div class="footer__items">
-        <div class="footer__img"><img src="/mastyxx/Masters/img/footer__logo.svg" alt=""></div>
+        <div class="footer__img"><img src="../footer__logo.svg" alt="Masty"></div>
         <div class="footer__contacts">
             <h2>Контакты</h2>
             <ul>
-            <li>+7 (909) 999-99-99</li>
-            <li>+7 (915) 123-45-67</li>
-            <li>Рязанский проспект, дом 39 лит. С</li>
-        </ul>
-        
-            
+                <li>+7 (909 999-99-99</li>
+                <li>+7 (915) 123-45-67</li>
+                <li>Рязанский проспект, дом 39 лит. С</li>
+            </ul>
         </div>
         <div class="working__time">
             <h2>Режим работы</h2>
-            <ul><li>C 10:00 до 21:00 (Пн-Пт)</li>
-            <li>С 11:00 до 20:00 (Сб-Вс)</li></ul>
+            <ul>
+                <li>С 10:00 до 21:00 (Пн-Пт)</li>
+                <li>С 11:00 до 20:00 (Сб-Вс)</li>
+            </ul>
         </div>
         <div class="social">
             <h2>Мы в социальных сетях</h2>
-            <button
-            onclick="window.location.href='https://vk.com/club234239337'" style="background: none; border: none; padding: 0; cursor: pointer; outline: none;">
-                <img src="/mastyxx/Masters/img/VK.png" alt="">
-            </button>
-
-            <button
-            onclick="window.location.href='https://max.ru'" style="background: none; border: none; padding: 0; cursor: pointer; outline: none;">
-                <img src="/mastyxx/Masters/img/MAX.png" alt="">
-            </button>
-        </div>
-
-    </div>
-</footer>
-</body>
-</html>
+            <button onclick="window.location.href='https://vk.com/club234239337'" style="background:none;border:none;padding:0;cursor:pointer;outline:none;">
