@@ -1,822 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap');
+/* ===================== */
+/* СТРАНИЦА АКЦИИ        */
+/* ===================== */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Общие стили */
-body {
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    color: #856A65;
-    line-height: 1.6;
-    background-color: #fff;
-}
-
-/* ХЕДЕР - исправленный */
-header {
-    width: 100%;
-    padding-top: 49px;
-    padding-bottom: 20px;
-}
-
-.header__container {
-    width: 100%;
-    max-width: 1296px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.header__items {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.stock-page {
+    padding: 80px 20px 120px;
     position: relative;
-    width: 100%;
-}
-
-.header__img {
-    order: 1;
-    flex: 0 0 auto;
-    margin-left: 0;
-    margin-top: 1px;
-}
-
-.header__img button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-}
-
-.header__img img {
-    padding-left: 6px;
-}
-
-/* Левая навигация */
-nav:first-of-type {
-    order: 2;
-    flex: 1;
-    margin-left: 0;
-}
-
-nav:first-of-type ul {
-    display: flex;
-    justify-content: flex-start;
-    gap: 80px;
-    margin-left: 20px;
-}
-
-/* Логотип */
-.header__logo {
-    order: 3;
-    flex: 0 0 auto;
-    margin-top: -12px;
-    margin-bottom: 30px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Правая навигация */
-nav:last-of-type {
-    order: 4;
-    flex: 1;
-    text-align: right;
-}
-
-nav:last-of-type ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 80px;
-    margin-right: 27px;
-}
-
-/* Стили ссылок */
-nav a {
-    font-family: 'Cormorant Garamond';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 130%;
-    text-decoration: none;
-    color: #856A65;
-    position: relative;
-    white-space: nowrap;
-}
-
-nav a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 1.5px;
-    background-color: #CDAA7D;
-    transition: width 0.35s;
-}
-
-nav a:hover::before {
-    width: 100%;
-}
-
-hr {
-    width: 100%;
-    max-width: 1296px;
-    margin: 20px auto 76px;
-    opacity: 0.5;
-    border: 1px solid #000000;
-}
-
-/* Мобильное меню - гамбургер */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1000;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #856A65;
-    margin: 3px 0;
-    transition: 0.4s;
-}
-
-/* МЕДИАЗАПРОСЫ ДЛЯ ХЕДЕРА */
-
-/* Планшеты и небольшие ноутбуки */
-@media (max-width: 1200px) {
-    .header__container {
-        padding: 0 30px;
-    }
-    
-    nav:first-of-type ul,
-    nav:last-of-type ul {
-        gap: 40px;
-    }
-}
-
-/* Планшеты */
-@media (max-width: 1024px) {
-    .header__logo {
-        position: static;
-        transform: none;
-        order: 1;
-        margin: 0 auto;
-    }
-    
-    .header__items {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .header__img {
-        order: 2;
-        margin-right: auto;
-        margin-left: 20px;
-    }
-    
-    nav:first-of-type {
-        order: 3;
-        width: 100%;
-        margin-top: 20px;
-        margin-left: 0;
-    }
-    
-    nav:first-of-type ul {
-        justify-content: center;
-        margin-left: 0;
-        gap: 60px;
-    }
-    
-    nav:last-of-type {
-        order: 4;
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    nav:last-of-type ul {
-        justify-content: center;
-        margin-right: 0;
-        gap: 60px;
-    }
-}
-
-/* Мобильные устройства */
-@media (max-width: 768px) {
-    header {
-        padding-top: 30px;
-        position: relative;
-    }
-    
-    .header__container {
-        padding: 0 15px;
-    }
-    
-    .menu-toggle {
-        display: flex;
-        order: 2;
-        margin-left: auto;
-    }
-    
-    .header__logo {
-        order: 1;
-        margin: 0 auto;
-        width: 80px;
-    }
-    
-    .header__img {
-        display: none; /* Скрываем VK на мобильных */
-    }
-    
-    /* Скрываем навигацию по умолчанию на мобильных */
-    nav:first-of-type,
-    nav:last-of-type {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        z-index: 999;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        padding: 20px;
-        margin-top: 0;
-    }
-    
-    /* Показываем навигацию при активации */
-    .mobile-menu-active nav:first-of-type,
-    .mobile-menu-active nav:last-of-type {
-        display: block;
-    }
-    
-    nav:first-of-type ul,
-    nav:last-of-type ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    
-    nav a {
-        font-size: 20px;
-        display: block;
-        padding: 10px 0;
-    }
-    
-    hr {
-        margin: 20px auto 40px;
-    }
-}
-
-/* Очень маленькие экраны */
-@media (max-width: 480px) {
-    .header__logo {
-        width: 60px;
-    }
-    
-    nav a {
-        font-size: 18px;
-    }
-}
-
-/* Форма записи */
-.form {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    width: 320px;
-    z-index: 1000;
-    background: white;
-    border-radius: 2px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.form-inner {
-    padding: 20px;
-}
-
-.form-inner h2 {
-    font-weight: 300;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-family: 'Cormorant Garamond', serif;
-    margin-bottom: 20px;
-}
-
-.form-content {
-    background: #FFF8F3;
-    padding: 20px;
-}
-
-.form-content h3 {
-    font-family: 'Cormorant Garamond';
-    font-weight: 700;
-    font-size: 18px;
-    margin: 15px 0 5px;
-    color: #856A65;
-}
-
-.form-content input,
-.form-content select {
-    width: 100%;
-    height: 38px;
-    padding: 0 10px;
-    background: #ffffff;
-    border: 1px solid #DDDDDD;
-    font-size: 16px;
-    font-family: 'Cormorant Garamond', serif;
-    color: #808080;
-    outline: none;
-}
-
-.form-content input[type="submit"] {
-    margin: 20px 0 0;
-    background: #CABEBC;
-    color: #ffffff;
-    font-size: 18px;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.2s linear;
-}
-
-.form-content input[type="submit"]:hover {
-    background: #C44D58;
-}
-
-/* Главная секция */
-.main-1 {
-    position: relative;
-    width: 100%;
     overflow: hidden;
 }
 
-.main-1 img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.bg1 {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    text-align: center;
-}
-
-.bg1 h1 {
-    font-family: 'Caudex';
-    font-weight: 700;
-    font-size: clamp(36px, 8vw, 72px);
-    color: #CABEBC;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.bg1 span {
+.stock-page .heading {
+    font-family: 'Aref Ruqaa Ink', serif;
     font-weight: 400;
-}
-
-.bg2 {
-    background: #856A65;
-    padding: 40px 20px;
-}
-
-.bg2 .container {
-    color: white;
-}
-
-.bg2 p {
-    font-family: 'Cormorant Garamond';
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.bg2 span {
-    font-weight: 700;
-}
-
-.bg2 a {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #CABEBC;
-    color: #933E95;
-    text-decoration: none;
-    font-family: 'Cormorant Garamond';
-    font-style: italic;
-    font-weight: 700;
-    font-size: 18px;
-    border: 1px solid #933E95;
-    margin-top: 20px;
-    transition: all 0.3s;
-}
-
-.bg2 a:hover {
-    background: #CD8B7D;
-    color: white;
-}
-
-/* Цитата */
-.main-2 .quote {
-    background: rgba(217, 217, 217, 0.15);
-    padding: 40px 20px;
-    margin: 40px 0;
-}
-
-.quote .container {
-    text-align: center;
-}
-
-.quote img {
-    width: 40px;
-    margin: 0 auto 20px;
-}
-
-.quote p {
-    font-family: 'Cormorant Garamond';
-    font-weight: 700;
-    font-size: clamp(18px, 4vw, 27px);
-    color: #856A65;
-    margin-bottom: 15px;
-}
-
-/* Партнеры */
-.partners .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 40px 20px;
-}
-
-.partners img {
-    max-width: 150px;
-    height: auto;
-}
-
-/* Услуги */
-.main-3 {
-    padding: 40px 20px;
-}
-
-.main-3 > .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.main-3 .service-item {
-    position: relative;
-    text-align: center;
-}
-
-.container-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #856A65;
-    opacity: 0.5;
-    z-index: -1;
-    transition: background 0.3s;
-}
-
-.service-item:hover .container-bg {
-    background: #856A65;
-}
-
-.service-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
-
-.service-item h1 {
-    font-family: 'Alegreya';
-    font-weight: 400;
-    font-size: 24px;
-    color: #856A65;
-    margin-top: 10px;
-}
-
-/* Наши работы */
-.main-4 {
-    padding: 40px 20px;
-}
-
-.main-4 h1 {
-    font-family: 'Aref Ruqaa Ink';
-    font-weight: 400;
-    font-size: clamp(32px, 6vw, 48px);
+    font-size: clamp(36px, 6vw, 48px);
     text-align: center;
     color: #856A65;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
-.main-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.main-links button {
-    background: white;
-    border: none;
-    font-family: 'Cormorant Garamond';
-    font-size: 18px;
-    color: #B7B3B3;
-    padding: 5px 15px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.main-links button:hover {
-    color: #856A65;
-    text-decoration: underline;
-    text-decoration-color: #CDAA7D;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-/* Футер */
-footer {
-    background: #FDF4F4;
-    border-top: 1px solid #242220;
-    border-bottom: 1px solid #242220;
-    opacity: 0.5;
-}
-
-.footer__items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 40px 20px;
-    max-width: 1200px;
+.stock-content {
+    max-width: 900px;
     margin: 0 auto;
-}
-
-.footer__img img {
-    width: 70px;
-    height: auto;
-}
-
-.footer__contacts h2,
-.working__time h2,
-.social h2 {
-    font-family: 'Cormorant Garamond';
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #856A65;
-}
-
-.footer__contacts ul,
-.working__time ul {
-    font-family: 'Cormorant Garamond';
-    font-size: 16px;
-}
-
-.footer__contacts li,
-.working__time li {
-    margin-bottom: 8px;
-}
-
-.social {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.social button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: none;
-    width: 40px;
-    height: 40px;
-}
-
-.social img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* Копирайт */
-.end {
-    background: #FDF4F4;
-    padding: 20px;
     text-align: center;
 }
 
-.end h1 {
-    font-family: 'Cormorant Garamond';
+.stock-content h2 {
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 700;
-    font-size: 14px;
-    color: #A6A0A0;
-    opacity: 0.5;
+    font-size: clamp(24px, 5vw, 32px);
+    line-height: 1.4;
+    color: #856A65;
+    margin: 0;
 }
 
-/* ... предыдущий CSS код ... */
+/* Декоративные эллипсы */
+.ellipse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-35.53deg);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.7;
+}
 
-/* Добавляем в конец файла или в соответствующее место */
+.ellipse img {
+    width: 300px;
+    height: auto;
+}
 
-/* ===================== */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ */
-/* ===================== */
+.ellipse img:last-child {
+    margin-left: -120px;
+    margin-top: 80px;
+}
 
+/* Адаптив */
 @media (max-width: 768px) {
-    /* Центрируем логотип в хедере на мобильных */
-    .header__items {
-        position: relative;
-        min-height: 80px;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 0 15px !important;
+    .stock-page {
+        padding: 60px 15px 80px;
     }
-    
-    .header__logo {
-        position: absolute !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        margin: 0 !important;
-        width: 80px !important;
-        height: auto !important;
-        order: 0 !important;
+
+    .stock-page .heading {
+        margin-bottom: 40px;
     }
-    
-    .menu-toggle {
-        display: flex !important;
-        order: 2 !important;
-        margin-left: auto !important;
+
+    .stock-content h2 {
+        font-size: 24px;
     }
-    
-    .header__img {
-        display: none !important;
+
+    .ellipse {
+        transform: translate(-50%, -50%) rotate(-35.53deg) scale(0.7);
     }
-    
-    /* Центрируем кнопку "Запишись Online" на мобильных */
-    .bg2 .container {
-        text-align: center !important;
-        padding: 20px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        height: 100% !important;
+
+    .ellipse img {
+        width: 200px;
     }
-    
-    .bg2 .container a {
-        display: inline-block !important;
-        margin: 20px auto 0 !important;
-        padding: 12px 30px !important;
-        text-align: center !important;
-        width: auto !important;
-        max-width: 250px !important;
-    }
-    
-    /* Адаптация главной секции */
-    .main-1 {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    .main-1 img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 300px !important;
-        object-fit: cover !important;
-    }
-    
-    .bg1 {
-        position: absolute !important;
-        margin-left: 0 !important;
-        margin-top: -320px !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 0 20px !important;
-    }
-    
-    .bg1 h1 {
-        font-size: 36px !important;
-        line-height: 1.2 !important;
-    }
-    
-    .bg2 {
-        width: 100% !important;
-        height: auto !important;
-        margin-left: 0 !important;
-        padding: 30px 20px !important;
-    }
-    
-    .main-1 .container {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        margin-left: 0 !important;
-        margin-top: 0 !important;
-        padding: 0 15px !important;
-    }
-    
-    /* Адаптация навигации хедера */
-    .header__items > nav {
-        display: none !important;
-    }
-    
-    .mobile-menu-active .header__items > nav {
-        display: block !important;
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        right: 0 !important;
-        background: white !important;
-        z-index: 1000 !important;
-        padding: 20px !important;
-    }
-    
-    .mobile-menu-active .header__items > nav ul {
-        flex-direction: column !important;
-        gap: 15px !important;
-    }
-    
-    .mobile-menu-active .header__items > nav li {
-        margin-right: 0 !important;
-        text-align: center !important;
+
+    .ellipse img:last-child {
+        margin-left: -80px;
+        margin-top: 60px;
     }
 }
 
-/* Для очень маленьких экранов */
 @media (max-width: 480px) {
-    .header__logo {
-        width: 60px !important;
+    .ellipse {
+        transform: translate(-50%, -50%) rotate(-35.53deg) scale(0.5);
     }
-    
-    .bg1 h1 {
-        font-size: 28px !important;
+
+    .ellipse img {
+        width: 150px;
     }
-    
-    .bg1 span {
-        font-size: 28px !important;
-    }
-    
-    .bg2 .container p {
-        font-size: 16px !important;
-    }
-    
-    .bg2 .container a {
-        font-size: 16px !important;
-        padding: 10px 20px !important;
+
+    .ellipse img:last-child {
+        margin-left: -60px;
     }
 }
