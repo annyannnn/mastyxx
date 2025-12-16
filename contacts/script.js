@@ -2,36 +2,42 @@
 // ФИЛЬТРАЦИЯ ГАЛЕРЕИ (только для index.html)
 // =====================
 
-var btn1 = document.querySelector("#all");
-var btn2 = document.querySelector("#hair");
-var btn3 = document.querySelector("#nails");
-var btn4 = document.querySelector("#makeup");
+// Проверяем, находимся ли мы на главной странице (index.html)
+function isIndexPage() {
+    return window.location.pathname.endsWith('index.html') || 
+           window.location.pathname.endsWith('/') ||
+           window.location.pathname.includes('/mastyxx/');
+}
 
-// Проверяем, есть ли элементы галереи на странице (только в index.html)
-if (btn1 && btn2 && btn3 && btn4) {
-    var elem1 = document.getElementById('1');
-    var elem2 = document.getElementById('2');
-    var elem3 = document.getElementById('3');
-    var elem4 = document.getElementById('4');
-    var elem5 = document.getElementById('5');
-    var elem6 = document.getElementById('6');
-    var elem7 = document.getElementById('7');
-    var elem8 = document.getElementById('8');
-    var elem9 = document.getElementById('9');
+if (isIndexPage()) {
+    var btn1 = document.querySelector("#all");
+    var btn2 = document.querySelector("#hair");
+    var btn3 = document.querySelector("#nails");
+    var btn4 = document.querySelector("#makeup");
 
-    function New(){
-        if (elem1) elem1.style.display ="inline-block";
-        if (elem2) elem2.style.display ="inline-block";
-        if (elem3) elem3.style.display ="inline-block";
-        if (elem4) elem4.style.display ="inline-block";
-        if (elem5) elem5.style.display ="inline-block";
-        if (elem6) elem6.style.display ="inline-block";
-        if (elem7) elem7.style.display ="inline-block";
-        if (elem8) elem8.style.display ="inline-block";
-        if (elem9) elem9.style.display ="inline-block";
-    }
+    if (btn1 && btn2 && btn3 && btn4) {
+        var elem1 = document.getElementById('1');
+        var elem2 = document.getElementById('2');
+        var elem3 = document.getElementById('3');
+        var elem4 = document.getElementById('4');
+        var elem5 = document.getElementById('5');
+        var elem6 = document.getElementById('6');
+        var elem7 = document.getElementById('7');
+        var elem8 = document.getElementById('8');
+        var elem9 = document.getElementById('9');
 
-    if (btn2) {
+        function New(){
+            if (elem1) elem1.style.display ="inline-block";
+            if (elem2) elem2.style.display ="inline-block";
+            if (elem3) elem3.style.display ="inline-block";
+            if (elem4) elem4.style.display ="inline-block";
+            if (elem5) elem5.style.display ="inline-block";
+            if (elem6) elem6.style.display ="inline-block";
+            if (elem7) elem7.style.display ="inline-block";
+            if (elem8) elem8.style.display ="inline-block";
+            if (elem9) elem9.style.display ="inline-block";
+        }
+
         btn2.onclick=function(){
             New();
             if (elem1) elem1.style.display ="none";
@@ -43,15 +49,11 @@ if (btn1 && btn2 && btn3 && btn4) {
             if (elem8) elem8.style.display ="none";
             if (elem9) elem9.style.display ="none";
         }
-    }
 
-    if (btn1) {
         btn1.onclick=function(){
             New();
         }
-    }
 
-    if (btn3) {
         btn3.onclick=function(){
             New();
             if (elem1) elem1.style.display ="none";
@@ -62,9 +64,7 @@ if (btn1 && btn2 && btn3 && btn4) {
             if (elem8) elem8.style.display ="none";
             if (elem9) elem9.style.display ="none";
         }
-    }
 
-    if (btn4) {
         btn4.onclick=function(){
             New();
             if (elem1) elem1.style.display ="none";
@@ -72,11 +72,11 @@ if (btn1 && btn2 && btn3 && btn4) {
             if (elem4) elem4.style.display ="none";
             if (elem7) elem7.style.display ="none";
         }
-    }
 
-    // Инициализируем активную кнопку в галерее
-    if (btn1) {
-        btn1.classList.add('active');
+        // Инициализируем активную кнопку в галерее
+        if (btn1) {
+            btn1.classList.add('active');
+        }
     }
 }
 
@@ -227,41 +227,6 @@ const mobileCSS = `
             padding-top: 70px;
         }
         
-        /* Адаптация заглавной надписи "Салон красоты Masty" (только для index.html) */
-        .bg1 {
-            position: absolute !important;
-            top: 50px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90% !important;
-            text-align: center !important;
-            z-index: 1 !important;
-        }
-        
-        .bg1 h1 {
-            font-size: 32px !important;
-            line-height: 1.2 !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-            color: #CABEBC !important;
-            margin: 0 !important;
-            padding: 10px !important;
-            background: rgba(133, 106, 101, 0.3) !important;
-            border-radius: 5px !important;
-        }
-        
-        .bg1 span {
-            font-size: 32px !important;
-            display: block !important;
-            margin-top: 5px !important;
-        }
-        
-        /* Адаптация изображения (только для index.html) */
-        .main-1 img {
-            height: 350px !important;
-            object-fit: cover !important;
-            width: 100% !important;
-        }
-        
         /* Центрируем кнопку "Запишись Online" (только для index.html) */
         .bg2 .container a {
             display: block !important;
@@ -288,80 +253,6 @@ const mobileCSS = `
             font-size: 16px !important;
             line-height: 1.4 !important;
             margin-bottom: 15px !important;
-        }
-        
-        /* Адаптация галереи (только для index.html) */
-        .main-4 .container div {
-            width: 100% !important;
-            margin-right: 0 !important;
-            margin-bottom: 15px !important;
-        }
-        
-        .main-4 h1 {
-            font-size: 36px !important;
-            margin-bottom: 30px !important;
-        }
-        
-        .main-links {
-            width: 100% !important;
-            margin-left: 0 !important;
-            overflow-x: auto !important;
-            white-space: nowrap !important;
-            padding-bottom: 10px !important;
-        }
-        
-        .main-links ul {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            padding: 0 10px !important;
-        }
-        
-        .main-links li {
-            margin-right: 15px !important;
-            flex-shrink: 0 !important;
-        }
-        
-        .main-links button {
-            font-size: 16px !important;
-            padding: 8px 12px !important;
-        }
-        
-        /* Адаптация секции с услугами (только для index.html) */
-        .main-3 {
-            padding: 20px 10px !important;
-        }
-        
-        .main-3 .container {
-            width: 100% !important;
-            margin-bottom: 20px !important;
-            margin-right: 0 !important;
-        }
-        
-        .main-3 .container h1 {
-            font-size: 24px !important;
-        }
-        
-        /* Адаптация цитаты (только для index.html) */
-        .main-2 .quote {
-            padding: 30px 20px !important;
-            margin: 30px 0 !important;
-        }
-        
-        .main-2 .quote p {
-            font-size: 20px !important;
-        }
-        
-        /* Адаптация партнеров (только для index.html) */
-        .partners .container {
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 15px !important;
-            padding: 20px !important;
-        }
-        
-        .partners img {
-            width: 100px !important;
-            height: auto !important;
         }
         
         /* Адаптация для страницы контактов */
@@ -398,22 +289,6 @@ const mobileCSS = `
         body {
             padding-top: 0 !important;
         }
-        
-        /* Возвращаем оригинальные стили для десктопа */
-        .bg1 h1 {
-            font-size: 72px !important;
-        }
-        
-        .bg1 span {
-            font-size: 72px !important;
-        }
-    }
-    
-    /* Активная кнопка фильтрации (только для index.html) */
-    .main-links button.active {
-        color: #856A65 !important;
-        text-decoration: underline !important;
-        text-decoration-color: #CDAA7D !important;
     }
 `;
 
@@ -421,6 +296,17 @@ const mobileCSS = `
 const style = document.createElement('style');
 style.textContent = mobileCSS;
 document.head.appendChild(style);
+
+// Определяем путь к логотипу в зависимости от страницы
+function getLogoPath() {
+    const currentPath = window.location.pathname;
+    // Если мы на странице контактов
+    if (currentPath.includes('contacts')) {
+        return '../logo.svg';
+    }
+    // Если на главной
+    return 'logo.svg';
+}
 
 // Создаем мобильный хедер и меню
 function createMobileMenu() {
@@ -435,10 +321,10 @@ function createMobileMenu() {
     const mobileHeader = document.createElement('div');
     mobileHeader.className = 'mobile-header';
     
-    // Создаем логотип
+    // Создаем логотип с правильным путем
     const logoImg = document.createElement('img');
     logoImg.className = 'mobile-header-logo';
-    logoImg.src = '../logo.svg';
+    logoImg.src = getLogoPath();
     logoImg.alt = 'Masty';
     
     // Создаем кнопку гамбургер-меню
@@ -459,14 +345,25 @@ function createMobileMenu() {
     const navList = document.createElement('ul');
     navList.className = 'mobile-nav-list';
     
-    // Пункты меню
+    // Определяем базовый путь для ссылок
+    function getBasePath() {
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('contacts')) {
+            return '../';
+        }
+        return '';
+    }
+    
+    const basePath = getBasePath();
+    
+    // Пункты меню с правильными путями
     const menuItems = [
-        {href: '../index.html', text: 'Главная'},
-        {href: '../Masters/masters.html', text: 'Мастера'},
-        {href: '../price/price.html', text: 'Прайс'},
-        {href: '../stock/stock.html', text: 'Акции'},
-        {href: '../reviews1/reviews.html', text: 'Отзывы'},
-        {href: 'contacts.html', text: 'Контакты'}
+        {href: basePath + 'index.html', text: 'Главная'},
+        {href: basePath + 'Masters/masters.html', text: 'Мастера'},
+        {href: basePath + 'price/price.html', text: 'Прайс'},
+        {href: basePath + 'stock/stock.html', text: 'Акции'},
+        {href: basePath + 'reviews1/reviews.html', text: 'Отзывы'},
+        {href: basePath + 'contacts/contacts.html', text: 'Контакты'}
     ];
     
     menuItems.forEach(item => {
@@ -507,7 +404,7 @@ function setupMobileMenuHandlers() {
     mobileNav.addEventListener('click', function(e) {
         if (e.target.tagName === 'A') {
             menuToggle.classList.remove('active');
-            this.classList.remove('active');
+            mobileNav.classList.remove('active');
             document.body.classList.remove('mobile-menu-open');
         }
     });
@@ -534,92 +431,30 @@ function setupMobileMenuHandlers() {
     });
 }
 
-// Адаптация для мобильных
-function adaptForMobile() {
-    const isMobile = window.innerWidth <= 768;
-    
-    // Центрируем кнопку "Запишись Online" (только для index.html)
-    const onlineBtn = document.querySelector('.bg2 .container a');
-    if (onlineBtn && isMobile) {
-        onlineBtn.style.cssText = `
-            display: block !important;
-            margin: 20px auto 0 !important;
-            text-align: center !important;
-            width: fit-content !important;
-            font-size: 16px !important;
-            padding: 10px 25px !important;
-        `;
-    } else if (onlineBtn) {
-        onlineBtn.style.cssText = '';
-    }
-    
-    // Обновляем заголовок для мобильных (только для index.html)
-    const bg1 = document.querySelector('.bg1');
-    if (bg1 && isMobile) {
-        bg1.style.cssText = `
-            position: absolute !important;
-            top: 50px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 90% !important;
-            text-align: center !important;
-            z-index: 1 !important;
-        `;
-        
-        const h1 = bg1.querySelector('h1');
-        if (h1) {
-            h1.style.cssText = `
-                font-size: 32px !important;
-                line-height: 1.2 !important;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-                color: #CABEBC !important;
-                margin: 0 !important;
-                padding: 10px !important;
-                background: rgba(133, 106, 101, 0.3) !important;
-                border-radius: 5px !important;
-            `;
-        }
-        
-        const span = bg1.querySelector('span');
-        if (span) {
-            span.style.cssText = `
-                font-size: 32px !important;
-                display: block !important;
-                margin-top: 5px !important;
-            `;
-        }
-    }
-}
-
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     // Создаем мобильное меню
     createMobileMenu();
-    
-    // Адаптация
-    adaptForMobile();
-    
-    // Обработчик изменения размера окна
-    window.addEventListener('resize', adaptForMobile);
 });
 
 // =====================
 // ФОРМА ЗАПИСИ (только для index.html)
 // =====================
 
-function toggleForm() {
-    const form = document.querySelector('.form');
-    if (form) {
+// Проверяем, есть ли форма на странице
+const form = document.querySelector('.form');
+if (form) {
+    // Функция для показа/скрытия формы
+    window.toggleForm = function() {
         form.style.display = form.style.display === 'block' ? 'none' : 'block';
     }
-}
 
-// Закрытие формы при клике вне ее
-document.addEventListener('click', function(event) {
-    const form = document.querySelector('.form');
-    if (form && form.style.display === 'block') {
-        if (!form.contains(event.target)) {
-            form.style.display = 'none';
+    // Закрытие формы при клике вне ее
+    document.addEventListener('click', function(event) {
+        if (form && form.style.display === 'block') {
+            if (!form.contains(event.target)) {
+                form.style.display = 'none';
+            }
         }
-    }
-});
+    });
+}
