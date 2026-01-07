@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/application-style.css" />
+    <title>Салон красоты «Masty» - Запись</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__container">
+        <div class="header__items">
+          <div class="header__img">
+            <button
+              onclick="window.location.href='https://vk.com/club234239337'"
+              style="
+                background: none;
+                border: none;
+                cursor: pointer;
+                outline: none;
+              "
+            >
+              <img src="assets/img/VK.svg" alt="VK" />
+            </button>
+          </div>
+
+          <nav>
+            <ul>
+              <li><a href="index.html">Главная</a></li>
+              <li><a href="masters.html">Мастера</a></li>
+              <li><a href="price.html">Прайс</a></li>
+            </ul>
+          </nav>
+
+          <img class="header__logo" src="assets/img/logo.svg" alt="Masty" />
+
+          <nav>
+            <ul>
+              <li><a href="stock.html">Акции</a></li>
+              <li><a href="reviews.html">Отзывы</a></li>
+              <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+          </nav>
+
+          <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </header>
+    <!-- Основной контент -->
+    <div class="container">
+      <!-- Страница 1: Выбор салона -->
+      <div class="page active" id="page-salon">
+        <h1>Запись на услугу</h1>
+        <h2>Выберите салон</h2>
+
+        <div class="salon-list">
+          <div
+            class="salon-card"
+            onclick="selectSalon('Масти', 'ул. Зацепа, 22', this)"
+          >
+            <div class="salon-name">Салон красоты «Masty»</div>
+            <div class="salon-address">ул. Зацепа, 22</div>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-continue"
+          onclick="showPage('page-services')"
+          id="btn-continue-salon"
+        >
+          Далее
+        </button>
+      </div>
+
+      <!-- Страница 2: Выбор услуг -->
+      <div class="page" id="page-services">
+        <h1>Выберите услугу</h1>
+        <p style="text-align: center; margin-bottom: 20px; color: #666">
+          Вы можете выбрать только одну услугу за раз
+        </p>
+
+        <!-- Показываем уже выбранные услуги -->
+        <div
+          id="selected-services-preview"
+          style="display: none; margin-bottom: 30px"
+        >
+          <div class="selection-info">
+            <strong>Уже выбраны услуги:</strong>
+            <div id="selected-services-list"></div>
+          </div>
+        </div>
+
+        <div class="services-categories">
+          <div class="category-section">
+            <div class="category-title">Парикмахерские услуги</div>
+            <div class="services-list">
+              <div
+                class="service-item"
+                onclick="toggleService(1, this, 'hair')"
+              >
+                <div class="service-name">
+                  Женская стрижка + укладка (короткие волосы)
+                  <div class="service-description">
+                    Профессиональная стрижка и укладка
+                  </div>
+                  <div class="service-duration">Продолжительность: 90 мин</div>
+                </div>
+                <div class="service-price">7 210 ₽</div>
+              </div>
+              <div
+                class="service-item"
+                onclick="toggleService(2, this, 'hair')"
+              >
+                <div class="service-name">
+                  Женская стрижка + укладка (длинные волосы)
+                  <div class="service-description">
+                    Профессиональная стрижка и укладка
+                  </div>
+                  <div class="service-duration">Продолжительность: 120 мин</div>
+                </div>
+                <div class="service-price">7 930 ₽</div>
+              </div>
+              <div
+                class="service-item"
+                onclick="toggleService(3, this, 'hair')"
+              >
+                <div class="service-name">
+                  Окрашивание волос
+                  <div class="service-description">
+                    Окрашивание любой сложности
+                  </div>
+                  <div class="service-duration">Продолжительность: 180 мин</div>
+                </div>
+                <div class="service-price">13 000 ₽</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-section">
+            <div class="category-title">Массаж</div>
+            <div class="services-list">
+              <div
+                class="service-item"
+                onclick="toggleService(9, this, 'massage')"
+              >
+                <div class="service-name">
+                  Стоун массаж
+                  <div class="service-description">Массаж горячими камнями</div>
+                  <div class="service-duration">Продолжительность: 90 мин</div>
+                </div>
+                <div class="service-price">4 800 ₽</div>
+              </div>
+              <div
+                class="service-item"
+                onclick="toggleService(10, this, 'massage')"
+              >
+                <div class="service-name">
+                  Антицеллюлитный массаж
+                  <div class="service-description">Массаж проблемных зон</div>
+                  <div class="service-duration">Продолжительность: 60 мин</div>
+                </div>
+                <div class="service-price">5 200 ₽</div>
+              </div>
+              <div
+                class="service-item"
+                onclick="toggleService(12, this, 'massage')"
+              >
+                <div class="service-name">
+                  Тайский массаж
+                  <div class="service-description">
+                    Традиционный тайский массаж
+                  </div>
+                  <div class="service-duration">Продолжительность: 90 мин</div>
+                </div>
+                <div class="service-price">6 700 ₽</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-section">
+            <div class="category-title">Косметология</div>
+            <div class="services-list">
+              <div
+                class="service-item"
+                onclick="toggleService(11, this, 'cosmetology')"
+              >
+                <div class="service-name">
+                  Массаж лица "Тоффа"
+                  <div class="service-description">Испанский массаж лица</div>
+                  <div class="service-duration">Продолжительность: 50 мин</div>
+                </div>
+                <div class="service-price">5 300 ₽</div>
+              </div>
+              <div
+                class="service-item"
+                onclick="toggleService(8, this, 'cosmetology')"
+              >
+                <div class="service-name">
+                  Окрашивание бровей
+                  <div class="service-description">Коррекция и окрашивание</div>
+                  <div class="service-duration">Продолжительность: 30 мин</div>
+                </div>
+                <div class="service-price">1 350 ₽</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-section">
+            <div class="category-title">Ногтевой сервис</div>
+            <div class="services-list">
+              <div
+                class="service-item"
+                onclick="toggleService(13, this, 'nails')"
+              >
+                <div class="service-name">
+                  Классический маникюр
+                  <div class="service-description">
+                    Уход и покрытие гель-лаком
+                  </div>
+                  <div class="service-duration">Продолжительность: 90 мин</div>
+                </div>
+                <div class="service-price">2 500 ₽</div>
+              </div>
+              <div
+                class="service-item"
+                onclick="toggleService(14, this, 'nails')"
+              >
+                <div class="service-name">
+                  Аппаратный педикюр
+                  <div class="service-description">
+                    Профессиональный уход за стопами
+                  </div>
+                  <div class="service-duration">Продолжительность: 90 мин</div>
+                </div>
+                <div class="service-price">3 500 ₽</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-continue"
+          onclick="showPage('page-specialists')"
+          id="btn-continue-services"
+          disabled
+        >
+          Далее
+        </button>
+      </div>
+
+      <!-- Страница 3: Выбор мастера -->
+      <div class="page" id="page-specialists">
+        <h1>Выберите мастера</h1>
+
+        <div class="selection-info" id="specialist-selection-info">
+          <!-- Информация о выбранной услуге будет здесь -->
+        </div>
+
+        <div class="specialists-grid" id="specialists-container">
+          <!-- Мастера будут загружены через JavaScript -->
+        </div>
+
+        <button
+          class="btn btn-continue"
+          onclick="showPage('page-date')"
+          id="btn-continue-specialist"
+          disabled
+        >
+          Далее
+        </button>
+      </div>
+
+      <!-- Страница 4: Выбор даты и времени -->
+      <div class="page" id="page-date">
+        <h1>Выберите дату и время</h1>
+
+        <div class="selection-info">
+          <strong>Выбранная услуга:</strong>
+          <span id="selected-service-info">-</span><br />
+          <strong>Выбранный мастер:</strong>
+          <span id="selected-specialist-info">-</span>
+        </div>
+
+        <!-- Показываем уже записанные услуги -->
+        <div
+          id="appointed-services-preview"
+          style="display: none; margin-bottom: 30px"
+        >
+          <div class="selection-info">
+            <strong>Уже записаны:</strong>
+            <div id="appointed-services-list"></div>
+          </div>
+        </div>
+
+        <div class="classic-calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav" onclick="changeMonth(-1)">‹</button>
+            <div class="current-month" id="current-month">Январь 2024</div>
+            <button class="calendar-nav" onclick="changeMonth(1)">›</button>
+          </div>
+
+          <div class="calendar-weekdays">
+            <div class="weekday">ПН</div>
+            <div class="weekday">ВТ</div>
+            <div class="weekday">СР</div>
+            <div class="weekday">ЧТ</div>
+            <div class="weekday">ПТ</div>
+            <div class="weekday">СБ</div>
+            <div class="weekday">ВС</div>
+          </div>
+
+          <div class="calendar-days" id="calendar-days">
+            <!-- Дни будут загружены через JavaScript -->
+          </div>
+        </div>
+
+        <div class="time-slots-container">
+          <div class="duration-info" id="duration-info">
+            Выберите мастера и дату для просмотра доступного времени
+          </div>
+
+          <div id="time-slots-display" style="display: none">
+            <div class="time-period">Утренние часы</div>
+            <div class="time-slots" id="morning-slots"></div>
+
+            <div class="time-period">Дневные часы</div>
+            <div class="time-slots" id="day-slots"></div>
+
+            <div class="time-period">Вечерние часы</div>
+            <div class="time-slots" id="evening-slots"></div>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-continue"
+          onclick="showPage('page-add-service')"
+          id="btn-continue-date"
+          disabled
+        >
+          Далее
+        </button>
+      </div>
+
+      <!-- Страница 5: Дополнительная услуга -->
+      <div class="page" id="page-add-service">
+        <h1>Хотите добавить еще услугу?</h1>
+
+        <!-- Показываем все выбранные услуги -->
+        <div id="all-appointed-services" style="margin-bottom: 30px">
+          <!-- Список всех записанных услуг будет здесь -->
+        </div>
+
+        <div class="add-service-prompt">
+          <p style="font-size: 18px; margin-bottom: 20px">
+            Вы можете добавить дополнительные услуги к вашему визиту
+          </p>
+
+          <div class="add-service-buttons">
+            <button class="add-service-btn yes" onclick="addAnotherService()">
+              Да, добавить услугу
+            </button>
+            <button class="add-service-btn no" onclick="showPage('page-final')">
+              Нет, продолжить
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Страница 6: Финальная форма -->
+      <div class="page" id="page-final">
+        <h1>Ваши данные</h1>
+
+        <div class="form-group">
+          <label>Имя *</label>
+          <input
+            type="text"
+            placeholder="Введите ваше имя"
+            id="client-name"
+            oninput="validateForm()"
+          />
+          <div class="error-message" id="name-error">
+            Пожалуйста, введите ваше имя
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Телефон *</label>
+          <input
+            type="tel"
+            placeholder="+7 (XXX) XXX-XX-XX"
+            id="client-phone"
+            oninput="validateForm()"
+          />
+          <div class="error-message" id="phone-error">
+            Пожалуйста, введите корректный номер телефона
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>E-mail</label>
+          <input
+            type="email"
+            placeholder="Введите ваш e-mail"
+            id="client-email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Комментарий</label>
+          <textarea
+            placeholder="Дополнительные пожелания"
+            id="client-comment"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-group">
+            <input type="checkbox" id="reminder" />
+            <label for="reminder">Напоминание</label>
+          </div>
+          <small>За 24 часа до записи</small>
+        </div>
+
+        <!-- Секция промокода -->
+        <div class="promocode-section">
+          <h3 style="margin-bottom: 10px">Есть промокод?</h3>
+          <p style="color: #666; margin-bottom: 10px; font-size: 14px">
+            Введите промокод для получения скидки
+          </p>
+          <div class="promocode-input-group">
+            <input
+              type="text"
+              class="promocode-input"
+              id="promocode-input"
+              placeholder="Введите промокод"
+              maxlength="10"
+            />
+            <button
+              class="promocode-btn"
+              id="apply-promocode"
+              onclick="applyPromocode()"
+            >
+              Применить
+            </button>
+          </div>
+          <div class="discount-applied" id="discount-applied">
+            ✅ Промокод применен! Скидка 5% активирована
+          </div>
+          <div class="discount-error" id="discount-error">
+            ❌ Неверный промокод
+          </div>
+        </div>
+
+        <div class="appointment-summary">
+          <h3>Детали записи</h3>
+          <div class="summary-item">
+            <strong>Салон:</strong> <span id="summary-salon">-</span>
+          </div>
+
+          <div class="selected-services">
+            <strong>Выбранные услуги:</strong>
+            <div id="summary-services">Не выбрано</div>
+
+            <!-- Блок скидки -->
+            <div
+              class="summary-item"
+              id="discount-section"
+              style="display: none"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span>Дополнительная скидка:</span>
+                <span class="discount-amount" id="discount-amount">-0 ₽</span>
+              </div>
+            </div>
+
+            <div class="summary-item">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span><strong>Общая стоимость:</strong></span>
+                <span>
+                  <span
+                    class="original-price"
+                    id="original-price"
+                    style="display: none"
+                    >0 ₽</span
+                  >
+                  <strong id="summary-total">0</strong> ₽
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="discount-info">
+          Специальное предложение: скидка 5% на стрижку и укладку при записи
+          онлайн
+        </div>
+
+        <div class="privacy-notice">
+          Нажимая кнопку "Записаться", вы соглашаетесь с политикой
+          конфиденциальности и обработкой персональных данных.
+        </div>
+
+        <button class="btn" onclick="submitForm()" id="btn-submit" disabled>
+          Записаться
+        </button>
+      </div>
+
+      <!-- Страница 7: Благодарность -->
+      <div class="page" id="page-thankyou">
+        <h1>Ваша заявка обрабатывается.</h1>
+        <p style="text-align: center; margin: 20px 0">
+          Наш специалист с Вами свяжется в ближайшее время
+        </p>
+        <h2 style="text-align: center; margin: 30px 0">Спасибо!</h2>
+
+        <div class="appointment-summary">
+          <h3>Информация о вашей записи</h3>
+          <div class="summary-item">
+            <strong>Номер записи:</strong> #<span id="booking-number"
+              >11201</span
+            >
+          </div>
+          <div class="summary-item">
+            <strong>Имя:</strong> <span id="final-name">-</span>
+          </div>
+          <div class="summary-item">
+            <strong>Телефон:</strong> <span id="final-phone">-</span>
+          </div>
+          <div class="summary-item">
+            <strong>Салон:</strong> <span id="final-salon">-</span>
+          </div>
+
+          <div class="selected-services">
+            <strong>Услуги:</strong>
+            <div id="final-services">-</div>
+
+            <!-- Блок скидки на странице благодарности -->
+            <div
+              class="summary-item"
+              id="final-discount-section"
+              style="display: none"
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span>Дополнительная скидка:</span>
+                <span class="discount-amount" id="final-discount-amount"
+                  >-0 ₽</span
+                >
+              </div>
+            </div>
+
+            <div class="summary-item">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span><strong>Общая стоимость:</strong></span>
+                <span>
+                  <span
+                    class="original-price"
+                    id="final-original-price"
+                    style="display: none"
+                    >0 ₽</span
+                  >
+                  <strong id="final-total">0</strong> ₽
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" onclick="showPage('page-salon')">
+          Записаться снова
+        </button>
+      </div>
+    </div>
+
+    <!-- Футер как в index.html -->
+    <footer>
+      <div class="footer__items">
+        <div class="footer__img">
+          <img src="assets/img/footer__logo.svg" alt="Masty" />
+        </div>
+        <div class="footer__contacts">
+          <h2>Контакты</h2>
+          <ul>
+            <li>+7 (999) 999-99-99</li>
+            <li>+7 (915) 123-45-67</li>
+            <li>Рязанский проспект, дом 39 лит. С</li>
+          </ul>
+        </div>
+        <div class="working__time">
+          <h2>Режим работы</h2>
+          <ul>
+            <li>С 10:00 до 21:00 (Пн-Пт)</li>
+            <li>С 11:00 до 20:00 (Сб-Вс)</li>
+          </ul>
+        </div>
+        <div class="social">
+          <h2>Мы в социальных сетях</h2>
+          <div>
+            <button
+              onclick="window.location.href='https://vk.com/club234239337'"
+              style="
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                outline: none;
+              "
+            >
+              <img src="assets/img/VK.png" alt="VK" />
+            </button>
+            <button
+              onclick="window.location.href='https://max.ru'"
+              style="
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                outline: none;
+              "
+            >
+              <img src="assets/img/MAX.png" alt="MAX" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <section>
+      <div class="end">
+        <h1>Copyright © 2017 - 2025</h1>
+      </div>
+    </section>
+
+    <script src="assets/js/application.js"></script>
+    <script src="assets/js/modal.js"></script>
+  </body>
+</html>
