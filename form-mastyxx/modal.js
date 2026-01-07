@@ -341,7 +341,7 @@ function createMobileMenu() {
   // Создаем логотип
   const logoImg = document.createElement("img");
   logoImg.className = "mobile-header-logo";
-  logoImg.src = "/static/logo.svg";
+  logoImg.src = "img/logo.svg";
   logoImg.alt = "Masty";
 
   // Создаем кнопку гамбургер-меню
@@ -364,12 +364,12 @@ function createMobileMenu() {
 
   // Пункты меню
   const menuItems = [
-    { href: "https://annyannnn.github.io/mastyxx/index.html", text: "Главная" },
-    { href: "https://annyannnn.github.io/mastyxx/masters.html", text: "Мастера" },
-    { href: "https://annyannnn.github.io/mastyxx/price.html", text: "Прайс" },
-    { href: "https://annyannnn.github.io/mastyxx/stock.html", text: "Акции" },
-    { href: "https://annyannnn.github.io/mastyxx/reviews.html", text: "Отзывы" },
-    { href: "https://annyannnn.github.io/mastyxx/contacts.html", text: "Контакты" },
+    { href: "/mastyxx/index.html", text: "Главная" },
+    { href: "/mastyxx/masters.html", text: "Мастера" },
+    { href: "/mastyxx/price.html", text: "Прайс" },
+    { href: "/mastyxx/stock.html", text: "Акции" },
+    { href: "/mastyxx/reviews.html", text: "Отзывы" },
+    { href: "/mastyxx/contacts.html", text: "Контакты" },
   ];
 
   menuItems.forEach((item) => {
@@ -529,3 +529,4 @@ document.addEventListener("click", function (event) {
     }
   }
 });
+
