@@ -1,0 +1,648 @@
+/* Импорты шрифтов из style.css */
+@import url("https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap");
+
+/* Основной контент */
+.container {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+h1:not(.end h1) {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-family: "Aref Ruqaa", serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #856a65;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Остальные стили остаются без изменений */
+/* Выбор салона */
+.salon-list {
+  margin-bottom: 40px;
+}
+
+.salon-card {
+  border: 1px solid #856a65;
+  padding: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.salon-card.selected {
+  border-color: #856a65;
+  background-color: #e8cec9;
+}
+
+.salon-card:hover {
+  border-color: #000;
+}
+
+.salon-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.salon-address {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Выбор услуг */
+.services-categories {
+  margin-bottom: 30px;
+}
+
+.category-section {
+  margin-bottom: 30px;
+}
+
+.category-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #856a65;
+}
+
+.services-list {
+  margin-bottom: 20px;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #856a65;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.service-item.selected {
+  background-color: #e8cec9;
+  border-color: #856a65;
+}
+
+.service-item:hover {
+  border-color: #000;
+}
+
+.service-name {
+  flex: 1;
+}
+
+.service-price {
+  font-weight: bold;
+  margin-left: 20px;
+  color: #000;
+}
+
+.service-description {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.service-duration {
+  font-size: 12px;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* Выбор мастеров */
+.specialists-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.specialist-card {
+  border: 1px solid #856a65;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.specialist-card.selected {
+  border-color: #856a65;
+  background-color: #e8cec9;
+}
+
+.specialist-card:hover {
+  border-color: #000;
+}
+
+.specialist-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #856a65;
+}
+
+.specialist-card.disabled:hover {
+  border-color: #856a65;
+}
+
+.specialist-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.specialist-role {
+  color: #666;
+  font-size: 14px;
+}
+
+.specialist-duration {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.specialist-specialization {
+  font-size: 11px;
+  color: #666;
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* Классический календарь */
+.classic-calendar {
+  background: #fff;
+  border: 1px solid #856a65;
+  margin-bottom: 30px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #e8cec9;
+  border-bottom: 1px solid #856a65;
+}
+
+.calendar-nav {
+  background: none;
+  border: 1px solid #856a65;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.calendar-nav:hover {
+  border-color: #000;
+}
+
+.current-month {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #f1dbd7;
+  border-bottom: 1px solid #856a65;
+}
+
+.weekday {
+  padding: 12px 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  color: #856a65;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+  padding: 15px 5px;
+  text-align: center;
+  border: 1px solid #856a65;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day:hover {
+  background: #f1dbd7;
+}
+
+.calendar-day.selected {
+  background: #856a65;
+  color: #fff;
+  border-color: #000;
+}
+
+.calendar-day.disabled {
+  color: #000;
+  cursor: not-allowed;
+  background: #efefef;
+}
+
+.calendar-day.disabled:hover {
+  background: #fafafa;
+}
+
+.calendar-day.other-month {
+  color: #999;
+  background: #f5f5f5;
+}
+
+.calendar-day.today {
+  background: #cd8b7d;
+  font-weight: bold;
+}
+
+/* Временные слоты */
+.time-slots-container {
+  margin-top: 30px;
+}
+
+.duration-info {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.time-period {
+  margin: 20px 0 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+  padding-left: 10px;
+  border-left: 3px solid #856a65;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.time-slot {
+  padding: 12px 8px;
+  border: 1px solid #856a65;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+  background: #fdf4f4;
+}
+
+.time-slot:hover {
+  border-color: #000;
+  background: #fdf4f4;
+}
+
+.time-slot.selected {
+  background: #e8cec9;
+  color: #fff;
+  border-color: #000;
+}
+
+.time-slot.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+  background: #f9f9f9;
+}
+
+.time-slot.disabled:hover {
+  border-color: #ddd;
+  background: #f9f9f9;
+}
+
+.time-slot.booked {
+  background: #ffe6e6;
+  color: #856a65;
+  cursor: not-allowed;
+  border-color: #ffcccc;
+}
+
+/* Дополнительная услуга */
+.add-service-prompt {
+  text-align: center;
+  margin: 40px 0;
+  padding: 30px;
+  background: #e8cec9;
+  border-radius: 10px;
+}
+
+.add-service-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.add-service-btn {
+  padding: 12px 30px;
+  border: 2px solid #715752;
+  background: #856a65;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.add-service-btn.yes {
+  background: #856a65;
+  color: white;
+}
+
+.add-service-btn.no {
+  background: white;
+  color: #856a65;
+}
+
+.add-service-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Форма данных клиента */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #856a65;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+/* Информация о записи */
+.appointment-summary {
+  background: #e8cec9;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #856a65;
+}
+
+.summary-item {
+  margin-bottom: 10px;
+}
+
+.selected-services {
+  margin-top: 15px;
+}
+
+.service-summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.discount-info {
+  background: #e8cec9;
+  padding: 15px;
+  border: 1px solid #856a65;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.privacy-notice {
+  font-size: 12px;
+  color: #666;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Кнопки */
+.btn {
+  display: block;
+  width: 200px;
+  margin: 30px auto;
+  padding: 15px;
+  background: #000000;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-continue {
+  background: #856a65;
+  color: #fff;
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+li {
+  list-style: none;
+}
+
+.error-message {
+  color: #630000;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.selection-info {
+  background: #e8cec9;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border-left: 4px solid #856a65;
+}
+
+/* Стили для отображения нескольких услуг */
+.appointed-service-item {
+  background: #f8f9fa;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border-left: 3px solid #856a65;
+}
+
+/* Стили для промокода */
+.promocode-section {
+  background: #f8f9fa;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border-left: 4px solid #856a65;
+}
+
+.promocode-input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.promocode-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.promocode-btn {
+  padding: 10px 20px;
+  background: #856a65;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.promocode-btn:hover {
+  background: #856a65;
+}
+
+.promocode-btn:disabled {
+  background: #856a65;
+  cursor: not-allowed;
+}
+
+.discount-applied {
+  color: #856a65;
+  font-weight: bold;
+  margin-top: 10px;
+  display: none;
+}
+
+.discount-error {
+  color: #580000;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.discount-amount {
+  color: hwb(0 0% 67%);
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .specialists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .time-slots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .calendar-day {
+    padding: 10px 2px;
+    font-size: 12px;
+    min-height: 50px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    margin: 5px 10px;
+  }
+
+  .add-service-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .promocode-input-group {
+    flex-direction: column;
+  }
+
+  /* Адаптив для header */
+  header {
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .header__items {
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+  }
+
+  .header__items li {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .header__logo {
+    margin: 10px 0;
+    order: -1;
+  }
+
+  .header__img {
+    margin: 0;
+  }
+
+  header hr {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
