@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/masters-style.css" />
+    <title>Мастера | Masty</title>
+  </head>
+  <body>
+    <!-- ХЕДЕР (тот же, что и на главной) -->
+    <header>
+      <div class="header__container">
+        <div class="header__items">
+          <div class="header__img">
+            <button
+              onclick="window.location.href='https://vk.com/club234239337'"
+              style="
+                background: none;
+                border: none;
+                cursor: pointer;
+                outline: none;
+              "
+            >
+              <img src="assets/img/VK.svg" alt="VK" />
+            </button>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="index.html">Главная</a></li>
+              <li><a href="masters.html">Мастера</a></li>
+              <li><a href="price.html">Прайс</a></li>
+            </ul>
+          </nav>
+          <img class="header__logo" src="assets/img/logo.svg" alt="Masty" />
+          <nav>
+            <ul>
+              <li><a href="stock/stock.html">Акции</a></li>
+              <li><a href="reviews1/reviews.html">Отзывы</a></li>
+              <li><a href="contacts/contacts.html">Контакты</a></li>
+            </ul>
+          </nav>
+          <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </header>
+
+    <main class="masters-page">
+      <!-- Заголовок -->
+      <section class="masters-hero">
+        <h1>Наши мастера</h1>
+      </section>
+
+      <!-- КАРТОЧКИ МАСТЕРОВ — теперь строго по центру на всех экранах -->
+      <div class="masters-wrapper">
+        <div class="masters-grid">
+          <div class="master-card">
+            <img src="assets/img/Pavlova.png" alt="Анна Павлова" />
+            <h3>АННА ПАВЛОВА</h3>
+            <p>Эстетист-массажист</p>
+          </div>
+          <div class="master-card">
+            <img src="assets/img/Rotar.png" alt="Юлия Ротарь" />
+            <h3>ЮЛИЯ РОТАРЬ</h3>
+            <p>Стилист</p>
+          </div>
+          <div class="master-card">
+            <img src="assets/img/Ponulak.png" alt="Наталия Понуляк" />
+            <h3>НАТАЛИЯ ПОНУЛЯК</h3>
+            <p>Администратор</p>
+          </div>
+          <div class="master-card">
+            <img src="assets/img/Dahno.png" alt="Анастасия Дахно" />
+            <h3>АНАСТАСИЯ ДАХНО</h3>
+            <p>Мастер ногтевого сервиса</p>
+          </div>
+          <div class="master-card">
+            <img src="assets/img/Shtern.png" alt="Наталья Штерн" />
+            <h3>НАТАЛЬЯ ШТЕРН</h3>
+            <p>Косметолог</p>
+          </div>
+          <div class="master-card">
+            <img src="assets/img/Mishenko.png" alt="Марина Мищенко" />
+            <h3>МАРИНА МИЩЕНКО</h3>
+            <p>Визажист</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer>
+      <div class="footer__items">
+        <div class="footer__img">
+          <img src="assets/img/footer__logo.svg" alt="Masty" />
+        </div>
+        <div class="footer__contacts">
+          <h2>Контакты</h2>
+          <ul>
+            <li>+7 (909) 999-99-99</li>
+            <li>+7 (915) 123-45-67</li>
+            <li>Рязанский проспект, дом 39 лит. С</li>
+          </ul>
+        </div>
+        <div class="working__time">
+          <h2>Режим работы</h2>
+          <ul>
+            <li>С 10:00 до 21:00 (Пн-Пт)</li>
+            <li>С 11:00 до 20:00 (Сб-Вс)</li>
+          </ul>
+        </div>
+        <div class="social">
+          <h2>Мы в социальных сетях</h2>
+          <div>
+            <button
+              onclick="window.location.href='https://vk.com/club234239337'"
+              style="
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                outline: none;
+              "
+            >
+              <img src="assets/img/VK.png" alt="" />
+            </button>
+            <button
+              onclick="window.location.href='https://max.ru'"
+              style="
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                outline: none;
+              "
+            >
+              <img src="assets/img/MAX.png" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/modal.js"></script>
+  </body>
+</html>
